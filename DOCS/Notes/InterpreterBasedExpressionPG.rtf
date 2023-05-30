@@ -1,0 +1,32 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh15540\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 ExecInitExprRec\
+-> Process the Expr Tree from the planner\
+-> For every node Push one execution step of type ExprEvalStep\
+	-> Fill the opcode in ExprEvalStep\
+	-> Fill that particular type of union\
+->ExecReadyInterpretedExpr\
+   -> make the dispatch table ready by calling ExecInitInterpreter\
+   -> ExecInitInterpreter will internally call ExecInterpExpr to just get the jump point of the dispatch table (by storing address of the lable in variables).\
+   -> Process the steps and convert the opcode in jump point using dispatch table\
+			ExprEvalStep *op = &state->steps[off];\
+			op->opcode = EEO_OPCODE(op->opcode);\
+                   note: I think during JITTING the opcode will be kept as it is only.\
+ \
+Actual Execution:\
+ExecInterpExpr\
+-> Process the ExprEvalStep\
+    -> start from the first step and jump based on op->opcode (opcode is already converted to jump statement)\
+    -> After performing first step, go to next step and jump to that opcode and so on.\
+\
+\
+\
+\
+1.  Maintain only the modifier slot on the tuple, and if any modifier rollback it will put the previous modifier\'92s slot on the tuple.\
+2.  Only case when the tuple is pointing to the frozen slot and their is a locker then tuple will point to the locker slot.\
+3.  If the tuple is pointing to some updater/inserter which is committed and a locker come then tuple will still point to updater/insert slot and multipack bit will be marked.\
+}

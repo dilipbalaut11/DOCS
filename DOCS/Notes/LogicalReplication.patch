@@ -1,0 +1,47 @@
+CreateReplicationSlot
+	- Allocate slot from ReplicationSlotCtl->replication_slots
+	- CreateInitDecodingContext (Read StartupDecodingContext function to see what is getting initialised in context)
+	- DecodingContextFindStartpoint find the starting point to decode was record
+          Loop
+		LogicalDecodingProcessRecord (DecodeWal record)[1].
+
+
+
+[1] LogicalDecodingProcessRecord
+	- ReorderBufferProcessXid : Tell reorderbuffer about an xid seen in the WAL stream. Has to be called at
+				    least once for every xid in XLogRecord->xl_xid
+				    Reorderbuffer keeps some datastructures about transactions in LSN order,
+ 				    for efficiency. To do that it has to know about when transactions are seen
+ 				    first in the WAL. As many types of records are not actually interesting for
+ 				    logical decoding, they do not necessarily pass though here.
+		- For any new transaction Id search a slot in hash and allocate ReorderBufferTXN by calling ReorderBufferGetTXN
+		- 
+
+
+
+1. Note down places where we use TID + snapshot to find the correct version of tuple
+   - zheap_delete, zheap_update  and may be zheap_lock_tuple uses only TID to identify correct version of tuple.  However, they try to find correct version by traversing the chain.  There are other places like TID scan and whereever zheap_fetch is used  where we use TID+snapshot.
+
+ZHeapTupleSatisfiesVisibility, zheap_fetch.
+
+2. Why XIDInMVCC snapshot is used for MVCC scans and zheaptuplesatisfiesupdate uses TransactionIdISInProgress
+During Scan we need to find the visible TID so we need to call XIDInMVCCSnapshot, but in zheaptuplesatisfiesupdate we have already selected the TID so just need to take decision whether
+we can continue to update or wait for some new updater or recheck the qual so it's enough to check the transaction status in heap.  Now, in zheap although we have selected the TID that
+Same TID has multiple version of the tuple.  But, ideally it should not cause problem for us as ultimately we have to update the latest tuple only and in heap we will find that by following the
+CTID chain.
+
+3. Examples for behaviour when snapshot will be used?  Why we need decision based on latest tuple?
+
+
+4. Any viable solution for On coflict problem, pros and cons of same.
+
+I don't find any solution other than sending a flag. Because if our own command has done inlace update then we need two different answer in two different placed
+In zheap_update we want the answer is SelfUpdate and for ExecOnConflictUpdate we want the answer to be Invisible.  So we can not manage this case with TID+SNAPSHOT,
+And the actual answer is that the tuple whatever was visible to our snapshot is SelfUpdated.  But, in heap for handling this we are passing the TID of invisible tuple
+but we have same TID for visible and invisible tuple and if we pass snapshot then the result is visible tuple got SelfUpdated.
+
+5. Robert's new question
+For one thing, it DOES lose correctness -- that's the problem, right?  For two things, if you're updating a tuple, it's got to be the latest one anyway, so why would you have to traverse the chain?
+
+I think here his question is about the point you mentioned that for finding latest tuple in heap we have to traverse the chain but zheap we have the TID of the latest tuple as visible tuple and
+The latest tuple has same TID for in-place update.

@@ -1,0 +1,10 @@
+CREATE PUBLICATION mypub1 FOR TABLE t1;
+CREATE SUBSCRIPTION mysub1 CONNECTION 'dbname=postgres host=127.0.0.1 port=54321 user=dilip' PUBLICATION mypub1;
+
+
+Transaction typeTransfer Funds to an account in other bank through NEFT
+Date of transaction03/04/2017
+From ICICI bank account016901627017-DILIP KUMAR
+To payee5826834805-BALJINDERSAVE AS FAVOURITE
+Transaction amount (INR)INR 32,000.00For quick payment, save these transaction details.
+Remarksrent for march 2017
