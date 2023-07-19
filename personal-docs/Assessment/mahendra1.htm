@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://ew24.ultipro.com/pages/utility/PrintPreview.html?USParams=containerIdOrSource=! -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Print Preview</title>
+        <meta http-equiv="CACHE-CONTROL" content="NO-STORE">
+        <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+        <meta http-equiv="PRAGMA" content="NO-CACHE">
+        <meta http-equiv="EXPIRES" content="-1">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./mahendra1_files/bootstrap.css" media="all">
+        <link rel="stylesheet" href="./mahendra1_files/bootstrap-responsive.css" media="all">
+        <link rel="stylesheet" href="./mahendra1_files/USPrintPreview.css" media="all">
+        <link rel="stylesheet" href="./mahendra1_files/USCustomStyles.aspx" media="all">
+        <style type="text/css" media="print">
+            body { margin: 0 0 10px 0;} 
+            .printButton { display: none; }
+        </style>
+        <style type="text/css" media="all">
+            /* Fixes for bootstrap */
+            label, input, button, select, textarea { line-height: inherit; }
+            label { display: inline; margin-bottom: 0; line-height: 1; }
+            h3 { line-height: inherit; }
+            .payStatement .grid td { white-space: nowrap; }
+            td h2, td h3 { page-break-after: auto; }
+            table tr { page-break-inside: auto; }			
+        </style>
+                       
+        <!-- JS -->
+        <script type="text/javascript" src="./mahendra1_files/jquery.min.js"></script>
+		<script type="text/javascript" src="./mahendra1_files/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="./mahendra1_files/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./mahendra1_files/jquery.maxlength.min.js"></script>
+        <script type="text/javascript" src="./mahendra1_files/common.js"></script>
+        <script type="text/javascript" language="javascript" src="./mahendra1_files/UltimateSoftware.jquery.jqprint.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // Get the parameters key/value array from the query string
+                var params = buildArrayFromKeyValueString(window.location.search.replace("?USParams=", ""));
+                var containerIdOrSource = params["containerIdOrSource"];
+                var isAltDomain = false;
+
+                var sourceDocument = null;
+                if (window.opener) {
+                    if (window.opener.name.indexOf("editresubmit") > -1) {
+                        sourceDocument = window.opener.frames[0].document;
+                    }
+                    else if (window.opener.frames["ASP.homecontainer_aspx"]) {
+                        //Handle case where page is opened from alternate domain
+                        sourceDocument = window.opener.frames["ASP.homecontainer_aspx"].frames["ASP._home_aspx"]
+                            .document;
+                        isAltDomain = true;
+                    }
+                    else if (window.opener.frames[2] && window.opener.frames[2].name === "ASP.homecontainer_aspx") {
+                        sourceDocument = window.opener.frames[2].frames[0].document;
+                        isAltDomain = true;
+                    }
+                }
+                // Start document filtering for printing
+                jqPrint.FilterDocumentInPopupWindow(containerIdOrSource, sourceDocument, null, isAltDomain);
+                // Override the overflow:auto only in the notes print preview page
+                if (containerIdOrSource === "PopupLightboxPrintPreview" ||
+                    containerIdOrSource === "HelpPrintPreview" ||
+                    containerIdOrSource === 'MetaPrintPreview')
+                    $("body").css("overflow", "visible");
+
+                if (containerIdOrSource === "PayStatement") {
+                    $("body").addClass("payStatementPage");
+
+                    var webPayStatementIFrame = $("[id$='IFrameContent']");
+                    if (webPayStatementIFrame.length > 0) {
+                        if (typeof params["printMode"] !== "undefined") {
+                            webPayStatementIFrame.attr('src', insertParameterToQueryString(webPayStatementIFrame.attr('src'), 'printMode', params["printMode"]));
+                        }
+
+                        var curIFrame = webPayStatementIFrame[0];
+                        if (curIFrame) {
+                            curIFrame.onload = function () {
+                                curIFrame.style.height = curIFrame.contentWindow.document.body.scrollHeight + 10 + 'px';
+                            }
+
+                            var printBtns = $("[id$='printButton']");
+                            if (printBtns.length > 0) {
+                                printBtns.unbind("click");
+
+                                printBtns.bind("click", function() {
+                                    window.frames["IFrameContent"].focus();
+                                    window.frames["IFrameContent"].print();
+                                });
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            });
+        </script>
+    </head>
+    <body>
+    
+
+<div class="floatR"><input type="button" id="printButton" class="printButton" value="Print" title="print - print this page"><input type="button" id="closeButton" class="printButton" value="Close" title="close - close window"></div><h3>
+	 Dilip  Kumar  - 000283    - EnterpriseDB Corporation
+</h3><h1>Mahendra Singh  Thalor  - Competencies</h1><div id="ctl00_containerInnerBootstrapWrapper">
+                    <div id="containerInnerMargin" class="containerInnerMargin printPreview">
+                        <div id="ctl00_DetailEffectiveDateBanner" class="effectiveDating hideVis" style="height: 30px">
+                            <p>
+                                Effective Dating: All changes to this record will be applied on
+                                <strong><span id="ctl00_DetailCurrentEffectiveDate">09/07/2020</span></strong>.
+                            </p>
+                        </div>
+                        
+                        
+                        <div id="ctl00_infoMsg" class="hideVis"></div>
+                        <div id="ctl00_errMsg" class="hideVis"></div>
+                        <div id="ctl00_warnMsg" class="hideVis"></div>
+                        <div id="ctl00_EffectiveDateBanner" class="effectiveDating hideVis">
+                            <h3>
+                                You are viewing this page in Effective Dating Mode</h3>
+                            All information shown is based on data for
+                            <strong><span id="CurrentEffectiveDate">
+                                09/07/2020</span></strong>.&nbsp;
+                            Any changes made will not be applied in the system until this date.<br>
+                            <br>
+                            Change the effective date to
+                            &nbsp;
+                            <span class="usDatePickerSpan">09/07/2020</span>
+
+                            <span>OK</span>
+                        </div>
+                        <div id="pendingIcon" class="pendingIcon">
+                            
+                        </div>
+                        
+    <link rel="stylesheet" type="text/css" href="./mahendra1_files/TinyMCE.css">
+    <link href="./mahendra1_files/bootstrap-scoped.min.css" rel="stylesheet">
+    
+    
+    
+    <link href="https://ew24.ultipro.com/stylesheets/Talent.css">
+    
+
+
+<div id="ctl00_Content_RequireJS_scriptPlaceHolder"></div>
+
+    <span id="ctl00_Content_ProcessManager"></span>
+    
+    
+    
+    <ol class="ratedSection">
+        
+        
+        
+        
+        
+                <li class="Competency collapsible RatedItem" competencyname="Collaboration/Relationship Building"><span class="IE7Shim">&nbsp;</span>
+                    
+                    
+                    
+<dl class="ItemWithMoreInfo CollapsibleItem">
+    <dt class="banner togglePanelSmExpanded">
+        <span id="ctl00_Content_CompetenciesRepeater_ctl00_CompetencyInformation_CompetencyWeightPane" class="floatRight noBold">
+            <label id="ctl00_Content_CompetenciesRepeater_ctl00_CompetencyInformation_CompetencyWeightLabel" localizablelabel="CompetencyWeight">Competency Weight</label>:
+            <span id="ctl00_Content_CompetenciesRepeater_ctl00_CompetencyInformation_CompetencyWeightDisplay">20</span>%
+            
+        </span>
+        <span class="item-name">Collaboration/Relationship Building</span>
+    </dt>
+    <dd class="mce-content-body">
+        <p>Takes primary ownership for the relationships and collaboration with team members within the company (peers, subordinates, and managers); participates in joint goals and projects; avoids playing politics and respects and values others’ differences;&nbsp;thoughtful&nbsp;and active contributor in meetings.&nbsp; &nbsp;</p>
+        <br>
+        <span class="MoreLink">Show details…</span>
+    </dd>
+    <dd>
+        
+        <img id="ctl00_Content_CompetenciesRepeater_ctl00_CompetencyInformation_JournalEntriesImage" src="./mahendra1_files/icnComments.png" style="border-width:0px;vertical-align:middle;">
+        <span class="journalEntry">Notes</span>
+        
+        
+    </dd>
+</dl>
+                    <dl>
+                        <dd>
+                            <table class="ratings">
+                                <tbody><tr id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_RatingContainer" class="">
+	<td id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_NameAndRatingDisplay" class="raterName" style="width:15%;">
+        <div>
+            <br>
+            <div id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_NameAndRelationshipDisplay">
+		
+                <strong>Mahendra Singh Thalor</strong>, Employee
+            
+	</div>
+
+            <div id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarDisplay" class="captionedStarRating noWrap" style="margin-top: 5px">
+                
+                
+                
+                <span class="USStarRating"><span id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating" disabled="disabled"><span class="star-rating-control"><div class="rating-cancel" style="display: none;"><a title="Cancel Rating"></a></div><div role="text" aria-label="" class="star-rating rater-0 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating_1"><a title="1">1</a></div><div role="text" aria-label="" class="star-rating rater-0 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating_2"><a title="2">2</a></div><div role="text" aria-label="" class="star-rating rater-0 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating_3"><a title="3">3</a></div><div role="text" aria-label="" class="star-rating rater-0 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating_4"><a title="4">4</a></div><div role="text" aria-label="" class="star-rating rater-0 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating_5"><a title="5">5</a></div></span><input value="1" name="ctl00$Content$CompetenciesRepeater$ctl00$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating_1" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="2" name="ctl00$Content$CompetenciesRepeater$ctl00$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating_2" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="3" name="ctl00$Content$CompetenciesRepeater$ctl00$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating_3" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="4" name="ctl00$Content$CompetenciesRepeater$ctl00$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating_4" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="5" name="ctl00$Content$CompetenciesRepeater$ctl00$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarRating_5" disabled="disabled" checked="" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"></span></span><br>
+                <span id="ctl00_Content_CompetenciesRepeater_ctl00_EmployeeRating_StarCaption" class="starCaption bold" style="white-space:normal">5 - Outstanding Performance</span>
+                <br>
+                
+                
+                
+            </div>
+        </div>
+    </td>
+	<td class="middle left">
+        <span class="RatingComments"><p>1. Seeks suggestions or ideas from group members on how to solve a conflict in the group before making a decision</p>
+<p>2. participates in joint goals and projects</p>
+<p>3. avoids playing politics and respects and values others’ differences</p>
+<p>4. Prioritizes the group efforts based on the common goal being worked towards</p>
+<p>5. Uses email discussions, document sharing services, and online wikis to communicate and keep group members up to date</p></span>
+        
+    </td>
+</tr>
+
+                                <tr id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_RatingContainer" class="rating-active">
+	<td id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_NameAndRatingDisplay" class="raterName" style="width:15%;">
+        <div>
+            <br>
+            <div id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_NameAndRelationshipDisplay">
+		
+                <strong>Dilip Kumar</strong>, Manager
+            
+	</div>
+
+            <div id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarDisplay" class="captionedStarRating noWrap" style="margin-top: 5px">
+                
+                
+                
+                <span class="USStarRating"><span id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating"><span class="star-rating-control"><div class="rating-cancel"><a title="Cancel Rating"></a></div><div role="text" aria-label="" class="star-rating rater-1 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating_1"><a title="1">1</a></div><div role="text" aria-label="" class="star-rating rater-1 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating_2"><a title="2">2</a></div><div role="text" aria-label="" class="star-rating rater-1 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating_3"><a title="3">3</a></div><div role="text" aria-label="" class="star-rating rater-1 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating_4"><a title="4">4</a></div><div role="text" aria-label="" class="star-rating rater-1 star StarRating star-rating-applied star-rating-live" id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating_5"><a title="5">5</a></div></span><input value="1" name="ctl00$Content$CompetenciesRepeater$ctl00$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating_1" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="2" name="ctl00$Content$CompetenciesRepeater$ctl00$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating_2" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="3" name="ctl00$Content$CompetenciesRepeater$ctl00$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating_3" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="4" name="ctl00$Content$CompetenciesRepeater$ctl00$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating_4" checked="" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="5" name="ctl00$Content$CompetenciesRepeater$ctl00$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarRating_5" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"></span></span><br>
+                <span id="ctl00_Content_CompetenciesRepeater_ctl00_ManagerRating_StarCaption" class="starCaption bold" style="white-space:normal">4 - Exceeds Expectations</span>
+                <br>
+                
+                
+                
+            </div>
+        </div>
+    </td>
+	<td class="middle left">
+        <span class="RatingComments"></span>
+        <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>Excellent collaboration with team members in handling the joint project.&nbsp; Clearly describe the problem to others and also understand the others point of view.</p></span>
+    </td>
+</tr>
+
+
+                                
+                                </tbody>
+                            </table>
+                        </dd>
+                    </dl>
+                </li>
+            
+                <li class="Competency collapsible RatedItem" competencyname="Communication Skills"><span class="IE7Shim">&nbsp;</span>
+                    
+                    
+                    
+<dl class="ItemWithMoreInfo CollapsibleItem">
+    <dt class="banner togglePanelSmExpanded">
+        <span id="ctl00_Content_CompetenciesRepeater_ctl01_CompetencyInformation_CompetencyWeightPane" class="floatRight noBold">
+            <label id="ctl00_Content_CompetenciesRepeater_ctl01_CompetencyInformation_CompetencyWeightLabel" localizablelabel="CompetencyWeight">Competency Weight</label>:
+            <span id="ctl00_Content_CompetenciesRepeater_ctl01_CompetencyInformation_CompetencyWeightDisplay">20</span>%
+            
+        </span>
+        <span class="item-name">Communication Skills</span>
+    </dt>
+    <dd class="mce-content-body">
+        <p>Clearly articulates information verbally and in writing; adjusts own communication style for different people and situations; participates in open exchange of ideas; listens to understand needs and concerns; communicates openly and honestly; gives undivided attention.&nbsp; &nbsp;</p>
+        <br>
+        <span class="MoreLink">Show details…</span>
+    </dd>
+    <dd>
+        
+        <img id="ctl00_Content_CompetenciesRepeater_ctl01_CompetencyInformation_JournalEntriesImage" src="./mahendra1_files/icnComments.png" style="border-width:0px;vertical-align:middle;">
+        <span class="journalEntry">Notes</span>
+        
+        
+    </dd>
+</dl>
+                    <dl>
+                        <dd>
+                            <table class="ratings">
+                                <tbody><tr id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_RatingContainer" class="">
+	<td id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_NameAndRatingDisplay" class="raterName" style="width:15%;">
+        <div>
+            <br>
+            <div id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_NameAndRelationshipDisplay">
+		
+                <strong>Mahendra Singh Thalor</strong>, Employee
+            
+	</div>
+
+            <div id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarDisplay" class="captionedStarRating noWrap" style="margin-top: 5px">
+                
+                
+                
+                <span class="USStarRating"><span id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating" disabled="disabled"><span class="star-rating-control"><div class="rating-cancel" style="display: none;"><a title="Cancel Rating"></a></div><div role="text" aria-label="" class="star-rating rater-2 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating_1"><a title="1">1</a></div><div role="text" aria-label="" class="star-rating rater-2 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating_2"><a title="2">2</a></div><div role="text" aria-label="" class="star-rating rater-2 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating_3"><a title="3">3</a></div><div role="text" aria-label="" class="star-rating rater-2 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating_4"><a title="4">4</a></div><div role="text" aria-label="" class="star-rating rater-2 star StarRating star-rating-applied star-rating-readonly" id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating_5"><a title="5">5</a></div></span><input value="1" name="ctl00$Content$CompetenciesRepeater$ctl01$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating_1" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="2" name="ctl00$Content$CompetenciesRepeater$ctl01$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating_2" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="3" name="ctl00$Content$CompetenciesRepeater$ctl01$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating_3" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="4" name="ctl00$Content$CompetenciesRepeater$ctl01$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating_4" disabled="disabled" checked="" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="5" name="ctl00$Content$CompetenciesRepeater$ctl01$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarRating_5" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"></span></span><br>
+                <span id="ctl00_Content_CompetenciesRepeater_ctl01_EmployeeRating_StarCaption" class="starCaption bold" style="white-space:normal">4 - Exceeds Expectations</span>
+                <br>
+                
+                
+                
+            </div>
+        </div>
+    </td>
+	<td class="middle left">
+        <span class="RatingComments"><p>1. Effectively communicates with colleagues, supervisors, partners and customers</p>
+<p>2. Shows active listening skills.</p>
+<p>3. Has a positive, results-driven attitude</p>
+<p>4. communicates openly and honestly;</p>
+<p>5. Effectively collaborates with people in (and outside of) the team to successfully reach targets</p></span>
+        
+    </td>
+</tr>
+
+                                <tr id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_RatingContainer" class="rating-active">
+	<td id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_NameAndRatingDisplay" class="raterName" style="width:15%;">
+        <div>
+            <br>
+            <div id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_NameAndRelationshipDisplay">
+		
+                <strong>Dilip Kumar</strong>, Manager
+            
+	</div>
+
+            <div id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarDisplay" class="captionedStarRating noWrap" style="margin-top: 5px">
+                
+                
+                
+                <span class="USStarRating"><span id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating"><span class="star-rating-control"><div class="rating-cancel"><a title="Cancel Rating"></a></div><div role="text" aria-label="" class="star-rating rater-3 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating_1"><a title="1">1</a></div><div role="text" aria-label="" class="star-rating rater-3 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating_2"><a title="2">2</a></div><div role="text" aria-label="" class="star-rating rater-3 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating_3"><a title="3">3</a></div><div role="text" aria-label="" class="star-rating rater-3 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating_4"><a title="4">4</a></div><div role="text" aria-label="" class="star-rating rater-3 star StarRating star-rating-applied star-rating-live" id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating_5"><a title="5">5</a></div></span><input value="1" name="ctl00$Content$CompetenciesRepeater$ctl01$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating_1" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="2" name="ctl00$Content$CompetenciesRepeater$ctl01$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating_2" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="3" name="ctl00$Content$CompetenciesRepeater$ctl01$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating_3" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="4" name="ctl00$Content$CompetenciesRepeater$ctl01$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating_4" checked="" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="5" name="ctl00$Content$CompetenciesRepeater$ctl01$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarRating_5" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"></span></span><br>
+                <span id="ctl00_Content_CompetenciesRepeater_ctl01_ManagerRating_StarCaption" class="starCaption bold" style="white-space:normal">4 - Exceeds Expectations</span>
+                <br>
+                
+                
+                
+            </div>
+        </div>
+    </td>
+	<td class="middle left">
+        <span class="RatingComments"></span>
+        <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>Very good communication within and outside the team.&nbsp; Easily explains his thoughts to others.</p></span>
+    </td>
+</tr>
+
+
+                                
+                                </tbody>
+                            </table>
+                        </dd>
+                    </dl>
+                </li>
+            
+                <li class="Competency collapsible RatedItem" competencyname="Functional/Job Knowledge"><span class="IE7Shim">&nbsp;</span>
+                    
+                    
+                    
+<dl class="ItemWithMoreInfo CollapsibleItem">
+    <dt class="banner togglePanelSmExpanded">
+        <span id="ctl00_Content_CompetenciesRepeater_ctl02_CompetencyInformation_CompetencyWeightPane" class="floatRight noBold">
+            <label id="ctl00_Content_CompetenciesRepeater_ctl02_CompetencyInformation_CompetencyWeightLabel" localizablelabel="CompetencyWeight">Competency Weight</label>:
+            <span id="ctl00_Content_CompetenciesRepeater_ctl02_CompetencyInformation_CompetencyWeightDisplay">20</span>%
+            
+        </span>
+        <span class="item-name">Functional/Job Knowledge</span>
+    </dt>
+    <dd class="mce-content-body">
+        <p>Proficient with the key skills required to perform job; demonstrates practical and technical knowledge and effectively transfers/shares knowledge to others; keeps focused on moving towards goal; follows through and redirects efforts if necessary; demonstrates competence and credibility in area of responsibility.&nbsp; &nbsp;</p>
+        <br>
+        <span class="MoreLink">Show details…</span>
+    </dd>
+    <dd>
+        
+        <img id="ctl00_Content_CompetenciesRepeater_ctl02_CompetencyInformation_JournalEntriesImage" src="./mahendra1_files/icnComments.png" style="border-width:0px;vertical-align:middle;">
+        <span class="journalEntry">Notes</span>
+        
+        
+    </dd>
+</dl>
+                    <dl>
+                        <dd>
+                            <table class="ratings">
+                                <tbody><tr id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_RatingContainer" class="">
+	<td id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_NameAndRatingDisplay" class="raterName" style="width:15%;">
+        <div>
+            <br>
+            <div id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_NameAndRelationshipDisplay">
+		
+                <strong>Mahendra Singh Thalor</strong>, Employee
+            
+	</div>
+
+            <div id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarDisplay" class="captionedStarRating noWrap" style="margin-top: 5px">
+                
+                
+                
+                <span class="USStarRating"><span id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating" disabled="disabled"><span class="star-rating-control"><div class="rating-cancel" style="display: none;"><a title="Cancel Rating"></a></div><div role="text" aria-label="" class="star-rating rater-4 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating_1"><a title="1">1</a></div><div role="text" aria-label="" class="star-rating rater-4 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating_2"><a title="2">2</a></div><div role="text" aria-label="" class="star-rating rater-4 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating_3"><a title="3">3</a></div><div role="text" aria-label="" class="star-rating rater-4 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating_4"><a title="4">4</a></div><div role="text" aria-label="" class="star-rating rater-4 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating_5"><a title="5">5</a></div></span><input value="1" name="ctl00$Content$CompetenciesRepeater$ctl02$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating_1" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="2" name="ctl00$Content$CompetenciesRepeater$ctl02$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating_2" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="3" name="ctl00$Content$CompetenciesRepeater$ctl02$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating_3" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="4" name="ctl00$Content$CompetenciesRepeater$ctl02$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating_4" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="5" name="ctl00$Content$CompetenciesRepeater$ctl02$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarRating_5" disabled="disabled" checked="" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"></span></span><br>
+                <span id="ctl00_Content_CompetenciesRepeater_ctl02_EmployeeRating_StarCaption" class="starCaption bold" style="white-space:normal">5 - Outstanding Performance</span>
+                <br>
+                
+                
+                
+            </div>
+        </div>
+    </td>
+	<td class="middle left">
+        <span class="RatingComments"><p>1. Shows passion for learning and expanding his skills.</p>
+<p>2. solved some bugs in quick time by debugging.</p>
+<p>Ex: DB-302</p>
+<p>3. keeps focused on moving towards goal;</p>
+<p>4. follows through and redirects efforts if necessary</p>
+<p>&nbsp;</p></span>
+        
+    </td>
+</tr>
+
+                                <tr id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_RatingContainer" class="rating-active">
+	<td id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_NameAndRatingDisplay" class="raterName" style="width:15%;">
+        <div>
+            <br>
+            <div id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_NameAndRelationshipDisplay">
+		
+                <strong>Dilip Kumar</strong>, Manager
+            
+	</div>
+
+            <div id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarDisplay" class="captionedStarRating noWrap" style="margin-top: 5px">
+                
+                
+                
+                <span class="USStarRating"><span id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating"><span class="star-rating-control"><div class="rating-cancel"><a title="Cancel Rating"></a></div><div role="text" aria-label="" class="star-rating rater-5 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating_1"><a title="1">1</a></div><div role="text" aria-label="" class="star-rating rater-5 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating_2"><a title="2">2</a></div><div role="text" aria-label="" class="star-rating rater-5 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating_3"><a title="3">3</a></div><div role="text" aria-label="" class="star-rating rater-5 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating_4"><a title="4">4</a></div><div role="text" aria-label="" class="star-rating rater-5 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating_5"><a title="5">5</a></div></span><input value="1" name="ctl00$Content$CompetenciesRepeater$ctl02$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating_1" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="2" name="ctl00$Content$CompetenciesRepeater$ctl02$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating_2" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="3" name="ctl00$Content$CompetenciesRepeater$ctl02$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating_3" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="4" name="ctl00$Content$CompetenciesRepeater$ctl02$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating_4" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="5" name="ctl00$Content$CompetenciesRepeater$ctl02$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarRating_5" checked="" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"></span></span><br>
+                <span id="ctl00_Content_CompetenciesRepeater_ctl02_ManagerRating_StarCaption" class="starCaption bold" style="white-space:normal">5 - Outstanding Performance</span>
+                <br>
+                
+                
+                
+            </div>
+        </div>
+    </td>
+	<td class="middle left">
+        <span class="RatingComments"></span>
+        <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>In short time Mahendra has gained excellent knowledge in the PostgreSQL&nbsp;especially in vacuum.&nbsp; His learning ability is outstanding.&nbsp; Very good debugging problem solving skills.&nbsp;</p></span>
+    </td>
+</tr>
+
+
+                                
+                                </tbody>
+                            </table>
+                        </dd>
+                    </dl>
+                </li>
+            
+                <li class="Competency collapsible RatedItem" competencyname="Internal/External Customer Focus"><span class="IE7Shim">&nbsp;</span>
+                    
+                    
+                    
+<dl class="ItemWithMoreInfo CollapsibleItem">
+    <dt class="banner togglePanelSmExpanded">
+        <span id="ctl00_Content_CompetenciesRepeater_ctl03_CompetencyInformation_CompetencyWeightPane" class="floatRight noBold">
+            <label id="ctl00_Content_CompetenciesRepeater_ctl03_CompetencyInformation_CompetencyWeightLabel" localizablelabel="CompetencyWeight">Competency Weight</label>:
+            <span id="ctl00_Content_CompetenciesRepeater_ctl03_CompetencyInformation_CompetencyWeightDisplay">20</span>%
+            
+        </span>
+        <span class="item-name">Internal/External Customer Focus</span>
+    </dt>
+    <dd class="mce-content-body">
+        <p>If employee does not have external customers, please consider who their internal customers are.&nbsp;</p>
+<p>&nbsp;</p>
+<p>Takes consultative approach to ensure best solution for the customer; can clearly articulate who your customers are; demonstrates attentiveness and responsiveness to your customer's needs; follows up&nbsp;with customers to ensure that solutions are meeting their needs; changes and adapts work processes to meet changing customer demands.&nbsp;&nbsp;</p>
+        <br>
+        <span class="MoreLink">Show details…</span>
+    </dd>
+    <dd>
+        
+        <img id="ctl00_Content_CompetenciesRepeater_ctl03_CompetencyInformation_JournalEntriesImage" src="./mahendra1_files/icnComments.png" style="border-width:0px;vertical-align:middle;">
+        <span class="journalEntry">Notes</span>
+        
+        
+    </dd>
+</dl>
+                    <dl>
+                        <dd>
+                            <table class="ratings">
+                                <tbody><tr id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_RatingContainer" class="">
+	<td id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_NameAndRatingDisplay" class="raterName" style="width:15%;">
+        <div>
+            <br>
+            <div id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_NameAndRelationshipDisplay">
+		
+                <strong>Mahendra Singh Thalor</strong>, Employee
+            
+	</div>
+
+            <div id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarDisplay" class="captionedStarRating noWrap" style="margin-top: 5px">
+                
+                
+                
+                <span class="USStarRating"><span id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating" disabled="disabled"><span class="star-rating-control"><div class="rating-cancel" style="display: none;"><a title="Cancel Rating"></a></div><div role="text" aria-label="" class="star-rating rater-6 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating_1"><a title="1">1</a></div><div role="text" aria-label="" class="star-rating rater-6 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating_2"><a title="2">2</a></div><div role="text" aria-label="" class="star-rating rater-6 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating_3"><a title="3">3</a></div><div role="text" aria-label="" class="star-rating rater-6 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating_4"><a title="4">4</a></div><div role="text" aria-label="" class="star-rating rater-6 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating_5"><a title="5">5</a></div></span><input value="1" name="ctl00$Content$CompetenciesRepeater$ctl03$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating_1" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="2" name="ctl00$Content$CompetenciesRepeater$ctl03$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating_2" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="3" name="ctl00$Content$CompetenciesRepeater$ctl03$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating_3" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="4" name="ctl00$Content$CompetenciesRepeater$ctl03$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating_4" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="5" name="ctl00$Content$CompetenciesRepeater$ctl03$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarRating_5" disabled="disabled" checked="" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"></span></span><br>
+                <span id="ctl00_Content_CompetenciesRepeater_ctl03_EmployeeRating_StarCaption" class="starCaption bold" style="white-space:normal">5 - Outstanding Performance</span>
+                <br>
+                
+                
+                
+            </div>
+        </div>
+    </td>
+	<td class="middle left">
+        <span class="RatingComments"><p>1. I did screen sharing session with customers to solve some escalations:</p>
+<p>Case:: 998955 | Issue: Query failing with error "invalid memory alloc request size" | Account: Konica Minolta Healthcare Americas, Inc.</p>
+<p>2. Takes consultative approach to ensure best solution for the customer</p>
+<p>3. changes and adapts work processes to meet changing customer demands</p>
+<p>4. Talks with a friendly and pleasant voice with customers</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></span>
+        
+    </td>
+</tr>
+
+                                <tr id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_RatingContainer" class="rating-active">
+	<td id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_NameAndRatingDisplay" class="raterName" style="width:15%;">
+        <div>
+            <br>
+            <div id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_NameAndRelationshipDisplay">
+		
+                <strong>Dilip Kumar</strong>, Manager
+            
+	</div>
+
+            <div id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarDisplay" class="captionedStarRating noWrap" style="margin-top: 5px">
+                
+                
+                
+                <span class="USStarRating"><span id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating"><span class="star-rating-control"><div class="rating-cancel"><a title="Cancel Rating"></a></div><div role="text" aria-label="" class="star-rating rater-7 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating_1"><a title="1">1</a></div><div role="text" aria-label="" class="star-rating rater-7 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating_2"><a title="2">2</a></div><div role="text" aria-label="" class="star-rating rater-7 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating_3"><a title="3">3</a></div><div role="text" aria-label="" class="star-rating rater-7 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating_4"><a title="4">4</a></div><div role="text" aria-label="" class="star-rating rater-7 star StarRating star-rating-applied star-rating-live" id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating_5"><a title="5">5</a></div></span><input value="1" name="ctl00$Content$CompetenciesRepeater$ctl03$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating_1" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="2" name="ctl00$Content$CompetenciesRepeater$ctl03$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating_2" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="3" name="ctl00$Content$CompetenciesRepeater$ctl03$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating_3" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="4" name="ctl00$Content$CompetenciesRepeater$ctl03$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating_4" checked="" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="5" name="ctl00$Content$CompetenciesRepeater$ctl03$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarRating_5" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"></span></span><br>
+                <span id="ctl00_Content_CompetenciesRepeater_ctl03_ManagerRating_StarCaption" class="starCaption bold" style="white-space:normal">4 - Exceeds Expectations</span>
+                <br>
+                
+                
+                
+            </div>
+        </div>
+    </td>
+	<td class="middle left">
+        <span class="RatingComments"></span>
+        <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>Mahendra&nbsp;is active on escalations.&nbsp; He understands the severity and completely of the escalations and based on that he suggests who could be the right person to pick a particular escalation.&nbsp; He is also active in solving escalation.</p></span>
+    </td>
+</tr>
+
+
+                                
+                                </tbody>
+                            </table>
+                        </dd>
+                    </dl>
+                </li>
+            
+                <li class="Competency collapsible RatedItem" competencyname="Results Orientation"><span class="IE7Shim">&nbsp;</span>
+                    
+                    
+                    
+<dl class="ItemWithMoreInfo CollapsibleItem">
+    <dt class="banner togglePanelSmExpanded">
+        <span id="ctl00_Content_CompetenciesRepeater_ctl04_CompetencyInformation_CompetencyWeightPane" class="floatRight noBold">
+            <label id="ctl00_Content_CompetenciesRepeater_ctl04_CompetencyInformation_CompetencyWeightLabel" localizablelabel="CompetencyWeight">Competency Weight</label>:
+            <span id="ctl00_Content_CompetenciesRepeater_ctl04_CompetencyInformation_CompetencyWeightDisplay">20</span>%
+            
+        </span>
+        <span class="item-name">Results Orientation</span>
+    </dt>
+    <dd class="mce-content-body">
+        <p>Being persistent and showing perseverance on achieving concrete and tangible results out of personal responsibility; getting optimum results from situations and being ready to take action and show tenacity in case of obstacles or resistance.</p>
+<p>&nbsp;</p>
+<p>Holds self accountable for achieving timely results; has continuous mastery of objectives and goals; demonstrates positive sense of urgency; pays close attention to detail; makes a personal commitment to achieving goals.&nbsp; &nbsp;</p>
+        <br>
+        <span class="MoreLink">Show details…</span>
+    </dd>
+    <dd>
+        
+        <img id="ctl00_Content_CompetenciesRepeater_ctl04_CompetencyInformation_JournalEntriesImage" src="./mahendra1_files/icnComments.png" style="border-width:0px;vertical-align:middle;">
+        <span class="journalEntry">Notes</span>
+        
+        
+    </dd>
+</dl>
+                    <dl>
+                        <dd>
+                            <table class="ratings">
+                                <tbody><tr id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_RatingContainer" class="">
+	<td id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_NameAndRatingDisplay" class="raterName" style="width:15%;">
+        <div>
+            <br>
+            <div id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_NameAndRelationshipDisplay">
+		
+                <strong>Mahendra Singh Thalor</strong>, Employee
+            
+	</div>
+
+            <div id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarDisplay" class="captionedStarRating noWrap" style="margin-top: 5px">
+                
+                
+                
+                <span class="USStarRating"><span id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating" disabled="disabled"><span class="star-rating-control"><div class="rating-cancel" style="display: none;"><a title="Cancel Rating"></a></div><div role="text" aria-label="" class="star-rating rater-8 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating_1"><a title="1">1</a></div><div role="text" aria-label="" class="star-rating rater-8 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating_2"><a title="2">2</a></div><div role="text" aria-label="" class="star-rating rater-8 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating_3"><a title="3">3</a></div><div role="text" aria-label="" class="star-rating rater-8 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating_4"><a title="4">4</a></div><div role="text" aria-label="" class="star-rating rater-8 star StarRating star-rating-applied star-rating-readonly star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating_5"><a title="5">5</a></div></span><input value="1" name="ctl00$Content$CompetenciesRepeater$ctl04$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating_1" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="2" name="ctl00$Content$CompetenciesRepeater$ctl04$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating_2" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="3" name="ctl00$Content$CompetenciesRepeater$ctl04$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating_3" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="4" name="ctl00$Content$CompetenciesRepeater$ctl04$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating_4" disabled="disabled" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"><input value="5" name="ctl00$Content$CompetenciesRepeater$ctl04$EmployeeRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarRating_5" disabled="disabled" checked="" class="star StarRating star-rating-applied star-rating-readonly" style="display: none;"></span></span><br>
+                <span id="ctl00_Content_CompetenciesRepeater_ctl04_EmployeeRating_StarCaption" class="starCaption bold" style="white-space:normal">5 - Outstanding Performance</span>
+                <br>
+                
+                
+                
+            </div>
+        </div>
+    </td>
+	<td class="middle left">
+        <span class="RatingComments"><p>1. Checks results in order to make sure that solutions are effective and takes the necessary action if resolution has not been accomplished</p>
+<p>Ex: relation&nbsp;extension lock</p>
+<p>2. pays close attention to detail</p>
+<p>3. makes a personal commitment to achieving goals</p>
+<p>4. Brainstorms different solutions to a problem and stays focused until a viable solution is found and implemented</p></span>
+        
+    </td>
+</tr>
+
+                                <tr id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_RatingContainer" class="rating-active">
+	<td id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_NameAndRatingDisplay" class="raterName" style="width:15%;">
+        <div>
+            <br>
+            <div id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_NameAndRelationshipDisplay">
+		
+                <strong>Dilip Kumar</strong>, Manager
+            
+	</div>
+
+            <div id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarDisplay" class="captionedStarRating noWrap" style="margin-top: 5px">
+                
+                
+                
+                <span class="USStarRating"><span id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating"><span class="star-rating-control"><div class="rating-cancel"><a title="Cancel Rating"></a></div><div role="text" aria-label="" class="star-rating rater-9 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating_1"><a title="1">1</a></div><div role="text" aria-label="" class="star-rating rater-9 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating_2"><a title="2">2</a></div><div role="text" aria-label="" class="star-rating rater-9 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating_3"><a title="3">3</a></div><div role="text" aria-label="" class="star-rating rater-9 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating_4"><a title="4">4</a></div><div role="text" aria-label="" class="star-rating rater-9 star StarRating star-rating-applied star-rating-live star-rating-on" id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating_5"><a title="5">5</a></div></span><input value="1" name="ctl00$Content$CompetenciesRepeater$ctl04$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating_1" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="2" name="ctl00$Content$CompetenciesRepeater$ctl04$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating_2" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="3" name="ctl00$Content$CompetenciesRepeater$ctl04$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating_3" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="4" name="ctl00$Content$CompetenciesRepeater$ctl04$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating_4" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"><input value="5" name="ctl00$Content$CompetenciesRepeater$ctl04$ManagerRating$StarRating$" type="radio" id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarRating_5" checked="" class="star StarRating star-rating-applied" style="display: none;" disabled="disabled"></span></span><br>
+                <span id="ctl00_Content_CompetenciesRepeater_ctl04_ManagerRating_StarCaption" class="starCaption bold" style="white-space:normal">5 - Outstanding Performance</span>
+                <br>
+                
+                
+                
+            </div>
+        </div>
+    </td>
+	<td class="middle left">
+        <span class="RatingComments"></span>
+        <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>Mahendra is always able to deliver the assigned project before time.&nbsp; Reply to the escalations on time.</p></span>
+    </td>
+</tr>
+
+
+                                
+                                </tbody>
+                            </table>
+                        </dd>
+                    </dl>
+                </li>
+            
+    </ol>
+
+    <div class="oneCol banner">
+        <table id="ctl00_Content_AverageRatingsTable" style="width: 100%">
+	<tbody><tr>
+		<td rowspan="2" class="middle"><h2><label id="ctl00_Content_SectionScoreLabel" localizablelabel="AverageCompentencyRatings">Average Competency Ratings</label></h2></td>
+		<td class="center">
+                    <span id="ctl00_Content_EmployeeParent" class="floatRight">
+                        <label id="ctl00_Content_Employee" localizablelabel="Employee">Employee</label>
+                    </span>
+                </td>
+		<td class="center">
+                    <span id="ManagerParent">
+                        <label id="ctl00_Content_Manager" localizablelabel="ManagerRating">Manager Rating</label>
+                    </span>
+                </td>
+	</tr>
+	<tr>
+		<td class="center"><span id="ctl00_Content_EmployeeScore" class="floatRight">4.80 - Outstanding Performance</span></td>
+		<td class="center">
+                    <span id="ctl00_Content_managerScore">4.40 - Exceeds Expectations</span>
+                    
+                </td>
+	</tr>
+</tbody></table>
+ 
+    </div>
+    
+
+
+ 
+ 
+
+
+
+
+                        
+                        
+<style type="text/css">
+    .labelEditingBlock {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: white;
+        /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80) !important";
+        /* IE 5-7 */
+        filter: alpha(opacity=80) !important;
+        /* Netscape */
+        -moz-opacity: 0.80 !important;
+        /* Safari 1.x */
+        -khtml-opacity: 0.80 !important;
+        /* Good browsers */
+        opacity: 0.80 !important;
+        overflow: hidden;
+    }
+    
+    .localizableLabel {
+        position: relative;
+        z-index: 1001;
+    }
+    
+    .editLabelButton {
+        text-decoration: underline !important;
+        color: rgb(0, 73, 144) !important;
+        margin-left: 10px;
+        cursor: pointer;
+        font-weight: normal;
+    }
+    
+    #labelEditingModal .modal-header {
+        padding-bottom: 20px;
+        padding-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    #labeleditingbuttons {
+        padding-right: 0px;
+        float: right;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-right: 16px;
+    }
+    
+    .container-fluid #labeleditingbuttons {
+        margin-right: 0;
+    }
+    
+    #labeleditingbuttons .buttonContainer {
+        float: left;
+        text-align: center;
+        margin-left: 5px;
+    }
+    
+    #labeleditingbuttons .buttonContainer label {
+        text-align: center;
+        margin: 0;
+        padding: 1px 0 0 0;
+        text-transform: lowercase;
+        display: block;
+        font-size: 9px;
+        line-height: normal;
+        color: #666;
+        font-family: 'museo_sans300', Helvetica, Arial, sans-serif;
+    }
+    
+    #labeleditingbuttons .buttonContainer button:disabled {
+         /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        /* IE 5-7 */
+        filter: alpha(opacity=30);
+        /* Netscape */
+        -moz-opacity: 0.30;
+        /* Safari 1.x */
+        -khtml-opacity: 0.30;
+        /* Good browsers */
+        opacity: 0.30;
+    }
+    
+    #labeleditingbuttons .buttonContainer input, #labeleditingbuttons .buttonContainer button {
+        width: 32px;
+        height: 32px;
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #labeleditingbuttons img {
+        float: left;
+        margin: 5px 2px 0 5px;
+    }
+    
+    #labeleditingbuttons #toggleRight {
+        float: left;
+    }
+    
+    #labeleditingbuttons #toggleRight.hide {
+        width: 10px;
+        display: inline-block;
+        visibility: hidden;
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    #labelEditingModal .alert-error ul li {
+        list-style-type: disc;
+    }
+    
+    .labelrequired {
+        background-position: 0px 12px;
+        padding-left: 10px;
+        background-image: url(../../images/required.gif);
+        background-repeat: no-repeat;
+    }
+    
+    .invalidtranslation {
+         border: 1px solid red !important;
+    }
+</style>
+<div id="labelEditingModal" class="tbs">
+    
+</div>
+                        <label id="ctl00_DebugCode" class="debug"></label>
+                    </div>
+                </div></body></html>

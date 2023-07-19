@@ -1,0 +1,20 @@
+﻿#tinymce p, .containerInner p, .containerInner td p{
+    margin: 0px;
+}
+.mce-path {
+    visibility: hidden !important;
+}
+.placeholderText {
+    color: #999;
+}
+.blueBorder {
+    border-color: #6478D7 !important;
+}
+.textRequired {
+    border-color: red !important;
+}
+
+.printPreview .printInterpretHtml.mce-content-body.talentReview
+{
+    width: 100% !important;
+}

@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://ew24.ultipro.com/pages/utility/PrintPreview.html?USParams=containerIdOrSource=! -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Print Preview</title>
+        <meta http-equiv="CACHE-CONTROL" content="NO-STORE">
+        <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+        <meta http-equiv="PRAGMA" content="NO-CACHE">
+        <meta http-equiv="EXPIRES" content="-1">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./Mahendra2_files/bootstrap.css" media="all">
+        <link rel="stylesheet" href="./Mahendra2_files/bootstrap-responsive.css" media="all">
+        <link rel="stylesheet" href="./Mahendra2_files/USPrintPreview.css" media="all">
+        <link rel="stylesheet" href="./Mahendra2_files/USCustomStyles.aspx" media="all">
+        <style type="text/css" media="print">
+            body { margin: 0 0 10px 0;} 
+            .printButton { display: none; }
+        </style>
+        <style type="text/css" media="all">
+            /* Fixes for bootstrap */
+            label, input, button, select, textarea { line-height: inherit; }
+            label { display: inline; margin-bottom: 0; line-height: 1; }
+            h3 { line-height: inherit; }
+            .payStatement .grid td { white-space: nowrap; }
+            td h2, td h3 { page-break-after: auto; }
+            table tr { page-break-inside: auto; }			
+        </style>
+                       
+        <!-- JS -->
+        <script type="text/javascript" src="./Mahendra2_files/jquery.min.js"></script>
+		<script type="text/javascript" src="./Mahendra2_files/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="./Mahendra2_files/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./Mahendra2_files/jquery.maxlength.min.js"></script>
+        <script type="text/javascript" src="./Mahendra2_files/common.js"></script>
+        <script type="text/javascript" language="javascript" src="./Mahendra2_files/UltimateSoftware.jquery.jqprint.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // Get the parameters key/value array from the query string
+                var params = buildArrayFromKeyValueString(window.location.search.replace("?USParams=", ""));
+                var containerIdOrSource = params["containerIdOrSource"];
+                var isAltDomain = false;
+
+                var sourceDocument = null;
+                if (window.opener) {
+                    if (window.opener.name.indexOf("editresubmit") > -1) {
+                        sourceDocument = window.opener.frames[0].document;
+                    }
+                    else if (window.opener.frames["ASP.homecontainer_aspx"]) {
+                        //Handle case where page is opened from alternate domain
+                        sourceDocument = window.opener.frames["ASP.homecontainer_aspx"].frames["ASP._home_aspx"]
+                            .document;
+                        isAltDomain = true;
+                    }
+                    else if (window.opener.frames[2] && window.opener.frames[2].name === "ASP.homecontainer_aspx") {
+                        sourceDocument = window.opener.frames[2].frames[0].document;
+                        isAltDomain = true;
+                    }
+                }
+                // Start document filtering for printing
+                jqPrint.FilterDocumentInPopupWindow(containerIdOrSource, sourceDocument, null, isAltDomain);
+                // Override the overflow:auto only in the notes print preview page
+                if (containerIdOrSource === "PopupLightboxPrintPreview" ||
+                    containerIdOrSource === "HelpPrintPreview" ||
+                    containerIdOrSource === 'MetaPrintPreview')
+                    $("body").css("overflow", "visible");
+
+                if (containerIdOrSource === "PayStatement") {
+                    $("body").addClass("payStatementPage");
+
+                    var webPayStatementIFrame = $("[id$='IFrameContent']");
+                    if (webPayStatementIFrame.length > 0) {
+                        if (typeof params["printMode"] !== "undefined") {
+                            webPayStatementIFrame.attr('src', insertParameterToQueryString(webPayStatementIFrame.attr('src'), 'printMode', params["printMode"]));
+                        }
+
+                        var curIFrame = webPayStatementIFrame[0];
+                        if (curIFrame) {
+                            curIFrame.onload = function () {
+                                curIFrame.style.height = curIFrame.contentWindow.document.body.scrollHeight + 10 + 'px';
+                            }
+
+                            var printBtns = $("[id$='printButton']");
+                            if (printBtns.length > 0) {
+                                printBtns.unbind("click");
+
+                                printBtns.bind("click", function() {
+                                    window.frames["IFrameContent"].focus();
+                                    window.frames["IFrameContent"].print();
+                                });
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            });
+        </script>
+    </head>
+    <body>
+    
+
+<div class="floatR"><input type="button" id="printButton" class="printButton" value="Print" title="print - print this page"><input type="button" id="closeButton" class="printButton" value="Close" title="close - close window"></div><h3>
+	 Dilip  Kumar  - 000283    - EnterpriseDB Corporation
+</h3><h1>Mahendra Singh  Thalor  - Open Ended Questions </h1><div id="ctl00_containerInnerBootstrapWrapper">
+                    <div id="containerInnerMargin" class="containerInnerMargin printPreview">
+                        <div id="ctl00_DetailEffectiveDateBanner" class="effectiveDating hideVis" style="height: 30px">
+                            <p>
+                                Effective Dating: All changes to this record will be applied on
+                                <strong><span id="ctl00_DetailCurrentEffectiveDate">09/07/2020</span></strong>.
+                            </p>
+                        </div>
+                        
+                        
+                        <div id="ctl00_infoMsg" class="hideVis"></div>
+                        <div id="ctl00_errMsg" class="hideVis"></div>
+                        <div id="ctl00_warnMsg" class="hideVis"></div>
+                        <div id="ctl00_EffectiveDateBanner" class="effectiveDating hideVis">
+                            <h3>
+                                You are viewing this page in Effective Dating Mode</h3>
+                            All information shown is based on data for
+                            <strong><span id="CurrentEffectiveDate">
+                                09/07/2020</span></strong>.&nbsp;
+                            Any changes made will not be applied in the system until this date.<br>
+                            <br>
+                            Change the effective date to
+                            &nbsp;
+                            <span class="usDatePickerSpan">09/07/2020</span>
+
+                            <span>OK</span>
+                        </div>
+                        <div id="pendingIcon" class="pendingIcon">
+                            
+                        </div>
+                        
+    <link rel="stylesheet" type="text/css" href="./Mahendra2_files/TinyMCE.css">
+    <link rel="stylesheet" type="text/css" href="./Mahendra2_files/font-awesome.min.css">
+    <link href="https://ew24.ultipro.com/stylesheets/Talent.css">
+    
+    
+    
+
+
+<div id="ctl00_Content_RequireJS_scriptPlaceHolder"></div>
+
+    <span id="ctl00_Content_ProcessManager"></span>
+    
+    
+    <div id="divPMOpenEndedQuestions">
+     
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_lblQuestionSortOrder">1.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_lblQuestionText">1. (For employee) Describe at least three of your most important contributions during the past year and why they were important: - Document evidence on minimum 3 major goals achieved for the year</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>NA</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Mahendra Singh  Thalor</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>1. I worked in "Allow vacuum command to process indexes in parallel" commit(40d964ec997f64227) and I helped in reviewing and testing, and in some bug fixes in this patch.</p>
+<p>2.&nbsp; "[HACKERS] Moving relation extension locks out of heavyweight lock manager"</p>
+<p>I worked on this thread to make progress and helped in new initial patch. This is backbone for parallel operations.</p>
+<p>3. "Error message inconsistency"</p>
+<p>I modified patch for above thread and it committed. This is helpful for error message consistency.</p>
+<p>4. Worked in&nbsp;performance test of logical decoding patch.</p>
+<p>5. RM44053: Log number of processed statements with edb_log_every_bulk_value</p>
+<p>This is helpful to identify number of rows processed.<br>6. apart from that I helped in some&nbsp;escalations and had screen sharing sessions with customers.</p>
+<p>a. Case:: 998955 | Issue: Query failing with error "invalid memory alloc request size" | Account: Konica Minolta Healthcare Americas, Inc.</p>
+<p>b. Sub: PANIC cannot make new WAL entries during recovery | Case No# 915987</p>
+<p>&nbsp;</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_lblQuestionSortOrder">2.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_lblQuestionText">2. (For employee) Describe at least three job related strengths you exhibit on a regular basis, and why they are central to your role:</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>NA</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Mahendra Singh  Thalor</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>1. My greatest strength is my&nbsp;listening ability. I pay careful attention to what I am being told, including specific information relating to current projects, details about future projects.</p>
+<p>2. I have ability to stay focused on my work and try to finish tasks in advance of a deadline.</p>
+<p>3. I have very good debugging&nbsp;skills and can&nbsp;analyze issue in short time.</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_lblQuestionSortOrder">3.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_lblQuestionText">3. (For employee) How can your manager best support you in your experience at EDB</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>NA</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Mahendra Singh  Thalor</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>In EDB, i am getting tasks as per my skills and in between,&nbsp; sometime I get time to learn and this gives me freedom to learn more about PG and it enhance my skills. I wish&nbsp;continue the same support from my manager at EDB.</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_lblQuestionSortOrder">4.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_lblQuestionText">4. (For employee) List 2-3 ideas/topics you would like to discuss during your Performance Review.</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>NA</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Mahendra Singh  Thalor</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>1. How to increase my&nbsp;productivity?</p>
+<p>&nbsp;</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_lblQuestionSortOrder">5.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_lblQuestionText">5. (For employee) Professional Development - please list anything that would contribute to your professional and personal growth</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>NA</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Mahendra Singh  Thalor</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>&nbsp;I want to attend&nbsp;conference to learn more..</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_lblQuestionSortOrder">6.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_lblQuestionText">6. (For manager) Describe at least three of the employee’s key responsibilities of their role during the past year and why they were important</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>Mahendra has done some important testing&nbsp;and analysis for logical decoding patch, related to WAL&nbsp;size increase, which is one of the key project.&nbsp; He has done testing for the parallel vacuum and found some early stage bugs.&nbsp; Mahendra&nbsp;has also contributed&nbsp;in solving the relation extension&nbsp;lock problem for parallel workers.&nbsp;&nbsp;Completed the patch for improving the vacuum error reporting.</p>
+<p>Worked on many customer bugs and delivered&nbsp;them on time.</p>
+<p>&nbsp;</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Mahendra Singh  Thalor</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>n/a</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_lblQuestionSortOrder">7.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_lblQuestionText">7. (For manager) Describe at least three job related strengths this employee exhibits on a regular basis, and why they are central to their role</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>-&nbsp;&nbsp;He is quick learner and because of this he is easily able to pick and fix the bug in any area.</p>
+<p>-&nbsp; Very good debugging and problem solving skills.</p>
+<p>-&nbsp; Always ready to accept the changes and that make him perfect to work in open source.</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Mahendra Singh  Thalor</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>n/a</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_lblQuestionSortOrder">8.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_lblQuestionText">8. (For manager) Describe areas for continuous growth and improvement related to employee’s current job activities</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>It will be good if he can now participate in writing blogs and representing EDB in conferences.</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Mahendra Singh  Thalor</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>n/a</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+     </div>
+
+                        
+                        
+<style type="text/css">
+    .labelEditingBlock {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: white;
+        /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80) !important";
+        /* IE 5-7 */
+        filter: alpha(opacity=80) !important;
+        /* Netscape */
+        -moz-opacity: 0.80 !important;
+        /* Safari 1.x */
+        -khtml-opacity: 0.80 !important;
+        /* Good browsers */
+        opacity: 0.80 !important;
+        overflow: hidden;
+    }
+    
+    .localizableLabel {
+        position: relative;
+        z-index: 1001;
+    }
+    
+    .editLabelButton {
+        text-decoration: underline !important;
+        color: rgb(0, 73, 144) !important;
+        margin-left: 10px;
+        cursor: pointer;
+        font-weight: normal;
+    }
+    
+    #labelEditingModal .modal-header {
+        padding-bottom: 20px;
+        padding-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    #labeleditingbuttons {
+        padding-right: 0px;
+        float: right;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-right: 16px;
+    }
+    
+    .container-fluid #labeleditingbuttons {
+        margin-right: 0;
+    }
+    
+    #labeleditingbuttons .buttonContainer {
+        float: left;
+        text-align: center;
+        margin-left: 5px;
+    }
+    
+    #labeleditingbuttons .buttonContainer label {
+        text-align: center;
+        margin: 0;
+        padding: 1px 0 0 0;
+        text-transform: lowercase;
+        display: block;
+        font-size: 9px;
+        line-height: normal;
+        color: #666;
+        font-family: 'museo_sans300', Helvetica, Arial, sans-serif;
+    }
+    
+    #labeleditingbuttons .buttonContainer button:disabled {
+         /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        /* IE 5-7 */
+        filter: alpha(opacity=30);
+        /* Netscape */
+        -moz-opacity: 0.30;
+        /* Safari 1.x */
+        -khtml-opacity: 0.30;
+        /* Good browsers */
+        opacity: 0.30;
+    }
+    
+    #labeleditingbuttons .buttonContainer input, #labeleditingbuttons .buttonContainer button {
+        width: 32px;
+        height: 32px;
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #labeleditingbuttons img {
+        float: left;
+        margin: 5px 2px 0 5px;
+    }
+    
+    #labeleditingbuttons #toggleRight {
+        float: left;
+    }
+    
+    #labeleditingbuttons #toggleRight.hide {
+        width: 10px;
+        display: inline-block;
+        visibility: hidden;
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    #labelEditingModal .alert-error ul li {
+        list-style-type: disc;
+    }
+    
+    .labelrequired {
+        background-position: 0px 12px;
+        padding-left: 10px;
+        background-image: url(../../images/required.gif);
+        background-repeat: no-repeat;
+    }
+    
+    .invalidtranslation {
+         border: 1px solid red !important;
+    }
+</style>
+<div id="labelEditingModal" class="tbs">
+    
+</div>
+                        <label id="ctl00_DebugCode" class="debug"></label>
+                    </div>
+                </div></body></html>

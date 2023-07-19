@@ -1,0 +1,24 @@
+postgres=# select * from plsql_profiler_rawdata;
+ runid | sourcecode | func_oid | line_number | exec_count | tuples_returned | time_total | time_shortest | time_longest | num_scans | tuples_fetched | tuples_
+inserted | tuples_updated | tuples_deleted | blocks_fetched | blocks_hit | wal_write | wal_flush | wal_file_sync | buffer_free_list_lock_acquire | db_file_rea
+d | db_file_write | db_file_sync | db_file_extend | sql_parse | query_plan | infinitecache_read | infinitecache_write | shmemindexlock | oidgenlock | xidgenlo
+ck | procarraylock | sinvalreadlock | sinvalwritelock | walbufmappinglock | walwritelock | controlfilelock | checkpointlock | clogcontrollock | subtranscontro
+llock | multixactgenlock | multixactoffsetcontrollock | multixactmembercontrollock | relcacheinitlock | checkpointercommlock | twophasestatelock | tablespacec
+reatelock | btreevacuumlock | addinshmeminitlock | autovacuumlock | autovacuumschedulelock | syncscanlock | relationmappinglock | asyncctllock | asyncqueueloc
+k | serializablexacthashlock | serializablefinishedlistlock | serializablepredicatelocklistlock | oldserxidlock | syncreplock | backgroundworkerlock | dynamic
+sharedmemorycontrollock | autofilelock | replicationslotallocationlock | replicationslotcontrollock | committscontrollock | committslock | replicationoriginlo
+ck | multixacttruncationlock | oldsnapshottimemaplock | icachelock | breakpointlock | bulkloadlock | edbresourcemanagerlock | clog | commit_timestamp | subtra
+ns | multixact_offset | multixact_member | async | oldserxid | wal_insert | buffer_content | buffer_io | replication_origin | replication_slot_io | proc | buf
+fer_mapping | lock_manager | predicate_lock_manager | wal_write_time | wal_flush_time | wal_file_sync_time | buffer_free_list_lock_acquire_time | db_file_read
+_time | db_file_write_time | db_file_sync_time | db_file_extend_time | sql_parse_time | query_plan_time | infinitecache_read_time | infinitecache_write_time |
+ shmemindexlock_time | oidgenlock_time | xidgenlock_time | procarraylock_time | sinvalreadlock_time | sinvalwritelock_time | walbufmappinglock_time | walwrite
+lock_time | controlfilelock_time | checkpointlock_time | clogcontrollock_time | subtranscontrollock_time | multixactgenlock_time | multixactoffsetcontrollock_
+time | multixactmembercontrollock_time | relcacheinitlock_time | checkpointercommlock_time | twophasestatelock_time | tablespacecreatelock_time | btreevacuuml
+ock_time | addinshmeminitlock_time | autovacuumlock_time | autovacuumschedulelock_time | syncscanlock_time | relationmappinglock_time | asyncctllock_time | as
+yncqueuelock_time | serializablexacthashlock_time | serializablefinishedlistlock_time | serializablepredicatelocklistlock_time | oldserxidlock_time | syncrepl
+ock_time | backgroundworkerlock_time | dynamicsharedmemorycontrollock_time | autofilelock_time | replicationslotallocationlock_time | replicationslotcontrollo
+ck_time | committscontrollock_time | committslock_time | replicationoriginlock_time | multixacttruncationlock_time | oldsnapshottimemaplock_time | icachelock_
+time | breakpointlock_time | bulkloadlock_time | edbresourcemanagerlock_time | clog_time | commit_timestamp_time | subtrans_time | multixact_offset_time | mul
+tixact_member_time | async_time | oldserxid_time | wal_insert_time | buffer_content_time | buffer_io_time | replication_origin_time | replication_slot_io_time
+ | proc_time | buffer_mapping_time | lock_manager_time | predicate_lock_manager_time | totalwaits | totalwaittime 
+

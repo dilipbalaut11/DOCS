@@ -1,0 +1,96 @@
+1. Create subscription command on standby internally call libpqrcv_create_slot which will send the CREATE REPLICATION SLOT command to walsender (before calling libpqrcv_create_slot it has called libpqrcv_get_conninfo to create walsender process on master.
+
+On master
+CreateReplicationSlot
+	- Allocate slot from ReplicationSlotCtl->replication_slots
+	- CreateInitDecodingContext (Read StartupDecodingContext function to see what is getting initialised in context)
+	- DecodingContextFindStartpoint find the starting point to decode was record
+          Loop
+		LogicalDecodingProcessRecord (DecodeWal record)[1].
+2. Now, the Logical worker launcher is checking subscription list, so in command 1 we have added new sbscription, so for that a new worker will be launched and that worker will call libpqrcv_startstreaming to restart the walsender and SART REPLICATION
+
+
+1. 
+Decode and Reorderbuffer:
+- Based on the operation pull out the tuple from the way, e.g for insert pull out inserted tuple for update old tuple and new tuple.
+- Using the reorder buffer create the transaction entry in ReorderBufferTxn
+- For each change create ReorderBufferChange entry and append in the change Lin in ReorderBufferTxn.
+
+
+2.
+Snapbuild:
+- Used for catalog lookup for finding the relation descriptor for the operation, so we need to catalog entry exactly at the time when the particular was is written
+- Using the builder keep note of min, max and committed xids.
+- Whenever xid commit was come if the xid has done the catalog changes then add that to committed tip list in the builder.  Whether the transaction done catalog changes or not will be set in
+ReorderBufferTxn based on some WAL like log_new_cid, or Inplace update (because as of now heap does inplace update only for catalog)
+- When we get the running_xid list we update the builder snapshot,  we set the oldest xid as xmin and all committed xid which are smaller then the new xmin are thrown away. 
+- Xmin is also set in the replication slot so that vacuum doesn't remove the catalog tuples which are visible to the logical decoding slot.
+
+
+1. START
+2. When get the first running xact list(xid 500,501) change state to -> BUILDING
+3. When get next running xact list (xid 504, 505) change state to -> FULL SNAPSHOT,  we still can not decode 504,505 because they were running concurrent to 500, 501 and we don't know what all catalog changes 500 and 501 done as we don't have all it's was to decode so we don't have snapshot for decoding 504 and 505 but after reaching FULL state we can decode any transaction but we will decode only after reaching to the consistent state
+4. When get running xact list (xid 506, 507) change the state to CONSISTENT now if we get commit for 506 or any xid which came after reaching to FULL state we can decode them.
+5. Question is if 506 is committed before reaching to consistent state why don't we decode its changes. Because when 506 started we know all the changes of all the concurrent xact so we can decode them but why we need to wait for consistent state?  What happen from FULL to CONSISTENT snapshot?
+- Because after FULL SNAPSHOT state we start collecting the changes in ReorderBufferTXN, so for some transaction like 504 and 505 changes will be there in ReorderBufferTXN but we can't decode them that the reason we start decoding only after we reach to consistent state, by that time all transaction which started before full snapshot state are committed.
+
+Pgoutput:
+
+
+
+Invalidation:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1] LogicalDecodingProcessRecord
+	- ReorderBufferProcessXid : Tell reorderbuffer about an xid seen in the WAL stream. Has to be called at
+				    least once for every xid in XLogRecord->xl_xid
+				    Reorderbuffer keeps some datastructures about transactions in LSN order,
+ 				    for efficiency. To do that it has to know about when transactions are seen
+ 				    first in the WAL. As many types of records are not actually interesting for
+ 				    logical decoding, they do not necessarily pass though here.
+		- For any new transaction Id search a slot in hash and allocate ReorderBufferTXN by calling ReorderBufferGetTXN
+		- 
+
+
+
+1. Note down places where we use TID + snapshot to find the correct version of tuple
+   - zheap_delete, zheap_update  and may be zheap_lock_tuple uses only TID to identify correct version of tuple.  However, they try to find correct version by traversing the chain.  There are other places like TID scan and whereever zheap_fetch is used  where we use TID+snapshot.
+
+ZHeapTupleSatisfiesVisibility, zheap_fetch.
+
+2. Why XIDInMVCC snapshot is used for MVCC scans and zheaptuplesatisfiesupdate uses TransactionIdISInProgress
+During Scan we need to find the visible TID so we need to call XIDInMVCCSnapshot, but in zheaptuplesatisfiesupdate we have already selected the TID so just need to take decision whether
+we can continue to update or wait for some new updater or recheck the qual so it's enough to check the transaction status in heap.  Now, in zheap although we have selected the TID that
+Same TID has multiple version of the tuple.  But, ideally it should not cause problem for us as ultimately we have to update the latest tuple only and in heap we will find that by following the
+CTID chain.
+
+3. Examples for behaviour when snapshot will be used?  Why we need decision based on latest tuple?
+
+
+4. Any viable solution for On coflict problem, pros and cons of same.
+
+I don't find any solution other than sending a flag. Because if our own command has done inlace update then we need two different answer in two different placed
+In zheap_update we want the answer is SelfUpdate and for ExecOnConflictUpdate we want the answer to be Invisible.  So we can not manage this case with TID+SNAPSHOT,
+And the actual answer is that the tuple whatever was visible to our snapshot is SelfUpdated.  But, in heap for handling this we are passing the TID of invisible tuple
+but we have same TID for visible and invisible tuple and if we pass snapshot then the result is visible tuple got SelfUpdated.
+
+5. Robert's new question
+For one thing, it DOES lose correctness -- that's the problem, right?  For two things, if you're updating a tuple, it's got to be the latest one anyway, so why would you have to traverse the chain?
+
+I think here his question is about the point you mentioned that for finding latest tuple in heap we have to traverse the chain but zheap we have the TID of the latest tuple as visible tuple and
+The latest tuple has same TID for in-place update.

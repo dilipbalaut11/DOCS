@@ -1,0 +1,204 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red255\green255\blue255;\red26\green26\blue26;
+\red16\green60\blue192;}
+{\*\expandedcolortbl;;\cssrgb\c13333\c13333\c13333;\cssrgb\c100000\c100000\c100000;\cssrgb\c13333\c13333\c13333;
+\cssrgb\c6667\c33333\c80000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww37900\viewh20780\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 \expnd0\expndtw0\kerning0
+1. Added relation name in error messages for constraint checks.  (05f18c6b6b6e4b44302ee20a042cedc664532aa2)\cf4 \outl0\strokewidth0 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \
+\
+\
+\
+Community(PG) commits:\cb1 \
+\cb3 1.\
+commit 05f18c6b6b6e4b44302ee20a042cedc664532aa2 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Author: Amit Kapila <{\field{\*\fldinst{HYPERLINK "mailto:akapila@postgresql.org"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 akapila@postgresql.org}}> \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Date: \'a0 Tue Jan 28 07:48:10 2020 +0530 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Added relation name in error messages for constraint checks. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 This gives more information to the user about the error and it makes such \'a0\
+\'a0 \'a0 messages consistent with the other similar messages in the code. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Reported-by: Simon Riggs \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Author: Mahendra Singh and Simon Riggs \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Reviewed-by: Beena Emerson and Amit Kapila \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Discussion:\'a0{\field{\*\fldinst{HYPERLINK "https://postgr.es/m/CANP8+j+7YUvQvGxTrCiw77R23enMJ7DFmyA3buR+fa2pKs4XhA@mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://postgr.es/m/CANP8+j+7YUvQvGxTrCiw77R23enMJ7DFmyA3buR+fa2pKs4XhA@mail.gmail.com}}\
+\
+\
+2.\
+commit aa3ef7ff505305d8ee5f733090b076c301a32cc8 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Author: Michael Paquier <{\field{\*\fldinst{HYPERLINK "mailto:michael@paquier.xyz"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 michael@paquier.xyz}}> \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Date: \'a0 Wed Dec 18 10:42:40 2019 +0900 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Fix some OBJS lists in two Makefiles to be ordered alphabetically \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 These have been missed in 01368e5, and count for plpython and the \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 backend's tsearch code. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Author: Mahendra Singh \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Discussion:\'a0{\field{\*\fldinst{HYPERLINK "https://postgr.es/m/CAKYtNAo4mxRRyDB0YqE6QLh17XD7pPQotpGm3GnHS+gQKz4zQQ@mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://postgr.es/m/CAKYtNAo4mxRRyDB0YqE6QLh17XD7pPQotpGm3GnHS+gQKz4zQQ@mail.gmail.com}}\
+\
+3.\
+commit 80d76be51cfb7f8f54e779ec5a287d80ac28b6e4 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Author: Tom Lane <{\field{\*\fldinst{HYPERLINK "mailto:tgl@sss.pgh.pa.us"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 tgl@sss.pgh.pa.us}}> \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Date: \'a0 Fri Feb 28 20:28:34 2020 -0500 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Avoid failure if autovacuum tries to access a just-dropped temp namespace. \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Such an access became possible when commit 246a6c8f7 added more \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 aggressive cleanup of orphaned temp relations by autovacuum. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Since autovacuum's snapshot might be slightly stale, it could \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 attempt to access an already-dropped temp namespace, resulting in \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 an assertion failure or null-pointer dereference. \'a0(In practice, \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 since we don't drop temp namespaces automatically but merely \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 recycle them, this situation could only arise if a superuser does \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 a manual drop of a temp namespace.\'a0 Still, that should be allowed.) \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 The core of the bug, IMO, is that isTempNamespaceInUse and its callers \'a0 \'a0 \'a0\
+\'a0 \'a0 failed to think hard about whether to treat "temp namespace isn't there" \'a0 \'a0\
+\'a0 \'a0 differently from "temp namespace isn't in use".\'a0 In hopes of forestalling \'a0\
+\'a0 \'a0 future mistakes of the same ilk, replace that function with a new one \'a0 \'a0 \'a0\
+\'a0 \'a0 checkTempNamespaceStatus, which makes the same tests but returns a \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 three-way enum rather than just a bool. \'a0isTempNamespaceInUse is gone \'a0 \'a0 \'a0\
+\'a0 \'a0 entirely in HEAD; but just in case some external code is relying on it, \'a0 \'a0\
+\'a0 \'a0 keep it in the back branches, as a bug-compatible wrapper around the \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 new function. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Per report originally from Prabhat Kumar Sahu, investigated by Mahendra \'a0 \'a0\
+\'a0 \'a0 Singh and Michael Paquier; the final form of the patch is my fault. \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 This replaces the failed fix attempt in a052f6cbb. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Backpatch as far as v11, as 246a6c8f7 was. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Discussion:\'a0{\field{\*\fldinst{HYPERLINK "https://postgr.es/m/CAKYtNAr9Zq=1-ww4etHo-VCC-k120YxZy5OS01VkaLPaDbv2tg@mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://postgr.es/m/CAKYtNAr9Zq=1-ww4etHo-VCC-k120YxZy5OS01VkaLPaDbv2tg@mail.gmail.com}}\
+\
+4.\
+commit 2401d93718310237b3cb1ff914abc1bcbdd8e1dc \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Author: Amit Kapila <{\field{\*\fldinst{HYPERLINK "mailto:akapila@postgresql.org"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 akapila@postgresql.org}}> \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Date: \'a0 Wed Apr 1 09:28:13 2020 +0530 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Fix coverity complaint about commit 40d964ec99. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 The coverity complained that dividing integer expressions and then \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 converting the integer quotient to type "double" would lose fractional \'a0 \'a0 \'a0\
+\'a0 \'a0 part.\'a0 Typecasting one of the arguments of expression with double should \'a0 \'a0\
+\'a0 \'a0 fix the report. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Author: Mahendra Singh Thalor \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Reviewed-by: Amit Kapila \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Discussion:\'a0{\field{\*\fldinst{HYPERLINK "https://postgr.es/m/20200329224818.6phnhv7o2q2rfovf@alap3.anarazel.de"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://postgr.es/m/20200329224818.6phnhv7o2q2rfovf@alap3.anarazel.de}}\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+5.\
+commit 7e453634bb62f06a048f5562ba59d52aa1f28d12 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Author: Amit Kapila <{\field{\*\fldinst{HYPERLINK "mailto:akapila@postgresql.org"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 akapila@postgresql.org}}> \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Date: \'a0 Wed Aug 26 09:40:52 2020 +0530 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Add additional information in the vacuum error context. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 The additional information added will be an offset number for heap \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 operations. This information will help us in finding the exact tuple due \'a0 \'a0\
+\'a0 \'a0 to which the error has occurred. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Author: Mahendra Singh Thalor and Amit Kapila \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Reviewed-by: Sawada Masahiko, Justin Pryzby and Amit Kapila \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Discussion:\'a0{\field{\*\fldinst{HYPERLINK "https://postgr.es/m/CAKYtNApK488TDF4bMbw+1QH8HJf9cxdNDXquhU50TK5iv_FtCQ@mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://postgr.es/m/CAKYtNApK488TDF4bMbw+1QH8HJf9cxdNDXquhU50TK5iv_FtCQ@mail.gmail.com}}\
+\
+6.\
+commit 24d2d38b1eb86c0b410ad0f07f66566a83c6f05c \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Author: Amit Kapila <{\field{\*\fldinst{HYPERLINK "mailto:akapila@postgresql.org"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 akapila@postgresql.org}}> \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Date: \'a0 Thu Apr 16 10:44:03 2020 +0530 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Fix the usage of parallel and full options of vacuum command. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Earlier we were inconsistent in allowing the usage of parallel and \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 full options.\'a0 Change it such that we disallow them only when they are \'a0 \'a0 \'a0\
+\'a0 \'a0 combined in a way that we don't support. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 In passing, improve the comments in some of the existing tests of parallel \'a0\
+\'a0 \'a0 vacuum. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Reported-by: Tushar Ahuja \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Author: Justin Pryzby, Amit Kapila \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Reviewed-by: Sawada Masahiko, Michael Paquier, Mahendra Singh Thalor and \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Amit Kapila \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Discussion:\'a0{\field{\*\fldinst{HYPERLINK "https://postgr.es/m/58c8d171-e665-6fa3-a9d3-d9423b694dae%40enterprisedb.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://postgr.es/m/58c8d171-e665-6fa3-a9d3-d9423b694dae%40enterprisedb.com}}\
+\
+7.\
+commit 47bc9ced0d0e96523e2c639c7066c9aede189ed7 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Author: Amit Kapila <{\field{\*\fldinst{HYPERLINK "mailto:akapila@postgresql.org"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 akapila@postgresql.org}}> \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+Date: \'a0 Wed Jan 29 11:08:50 2020 +0530 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Add --parallel option to vacuumdb command. \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Commit 40d964ec99 allowed vacuum command to leverage multiple CPUs by \'a0 \'a0 \'a0\
+\'a0 \'a0 invoking parallel workers to process indexes.\'a0 This commit provides a \'a0 \'a0 \'a0\
+\'a0 \'a0 '--parallel' option to specify the parallel degree used by vacuum command. \'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Author: Masahiko Sawada, with few modifications by me \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Reviewed-by: Mahendra Singh and Amit Kapila \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0\
+\'a0 \'a0 Discussion:\'a0{\field{\*\fldinst{HYPERLINK "https://postgr.es/m/CAD21AoDTPMgzSkV4E3SFo1CH_x50bf5PqZFQf4jmqjk-C03BWg@mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://postgr.es/m/CAD21AoDTPMgzSkV4E3SFo1CH_x50bf5PqZFQf4jmqjk-C03BWg@mail.gmail.com}}\
+\
+\
+Community replies:\
+1. \'a0display offset along with block number in vacuum errors\
+2.\'a0 Some work in relation extension lock, posted initial patch internally,\
+Tested ongoing patch and posted results\
+[HACKERS] Moving relation extension locks out of heavyweight lock manager\
+3. New started thread:\
+Assert failure due to "drop schema pg_temp_3 cascade" for temporary tables and \\d+ is not showing any info after dropping temp table schema\
+\
+4.\
+My some replies in parallel vacuum:\
+A)\'a0{\field{\*\fldinst{HYPERLINK "https://www.postgresql.org/message-id/CAKYtNArsAPNgvotjg8RrS4aFV1vUBTkb%2BPLsW69EfwwCfgOchw%40mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://www.postgresql.org/message-id/CAKYtNArsAPNgvotjg8RrS4aFV1vUBTkb%2BPLsW69EfwwCfgOchw%40mail.gmail.com}}\
+\
+B) patch for regress parallel:\
+{\field{\*\fldinst{HYPERLINK "https://www.postgresql.org/message-id/CAKYtNAq8aJPy1ArMOqwQ-v6XHKWJAJ72hAdgkfOS5xvt2cp23Q%40mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://www.postgresql.org/message-id/CAKYtNAq8aJPy1ArMOqwQ-v6XHKWJAJ72hAdgkfOS5xvt2cp23Q%40mail.gmail.com}}\
+C)\
+{\field{\*\fldinst{HYPERLINK "https://www.postgresql.org/message-id/CAKYtNAoyZMsoQTK7saUYYXfs4Yh%3D2mkHj6knNux3CF1PvNFudA%40mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://www.postgresql.org/message-id/CAKYtNAoyZMsoQTK7saUYYXfs4Yh%3D2mkHj6knNux3CF1PvNFudA%40mail.gmail.com}}\
+D)\
+{\field{\*\fldinst{HYPERLINK "https://www.postgresql.org/message-id/CAKYtNApqcbSmm%3D1NNqYzmrOgp7mRrN%2Bz-Q4yt0ptzRPVQMA96Q%40mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://www.postgresql.org/message-id/CAKYtNApqcbSmm%3D1NNqYzmrOgp7mRrN%2Bz-Q4yt0ptzRPVQMA96Q%40mail.gmail.com}}\
+E) small patch for parallel options:\
+{\field{\*\fldinst{HYPERLINK "https://www.postgresql.org/message-id/CAKYtNAqY4sXPOau%3DNeBtsUX3UMn4cndi7_4Q9jH_MBDboaAhzQ%40mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://www.postgresql.org/message-id/CAKYtNAqY4sXPOau%3DNeBtsUX3UMn4cndi7_4Q9jH_MBDboaAhzQ%40mail.gmail.com}}\
+F) delta patch\
+{\field{\*\fldinst{HYPERLINK "https://www.postgresql.org/message-id/CAKYtNAroXD9C5bAiqne1KZV0vpEhfKZqbinH4AW9pDV_V9KYgQ%40mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://www.postgresql.org/message-id/CAKYtNAroXD9C5bAiqne1KZV0vpEhfKZqbinH4AW9pDV_V9KYgQ%40mail.gmail.com}}\
+G)\
+{\field{\*\fldinst{HYPERLINK "https://www.postgresql.org/message-id/CAKYtNApV5NfzKdZ3U0yBi2KHh-KeJk0rZatqm4YKt1UG0o98LQ%40mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://www.postgresql.org/message-id/CAKYtNApV5NfzKdZ3U0yBi2KHh-KeJk0rZatqm4YKt1UG0o98LQ%40mail.gmail.com}}\
+H)\
+{\field{\*\fldinst{HYPERLINK "https://www.postgresql.org/message-id/CAKYtNArra0Bra33eg-swaQPY2aYdKFT%3DhVCARU38fJ5us4K6bQ%40mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://www.postgresql.org/message-id/CAKYtNArra0Bra33eg-swaQPY2aYdKFT%3DhVCARU38fJ5us4K6bQ%40mail.gmail.com}}\
+I) Found assert failure\
+{\field{\*\fldinst{HYPERLINK "https://www.postgresql.org/message-id/CAKYtNAoMnWM6RBz1gocaP0%3DMQdwkcOujETtuh%3D_k%2BimqCuxLjA%40mail.gmail.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 https://www.postgresql.org/message-id/CAKYtNAoMnWM6RBz1gocaP0%3DMQdwkcOujETtuh%3D_k%2BimqCuxLjA%40mail.gmail.com}}\
+\
+Internal EDB thread: 1) Relation Extension Lock\
+2. brief about relation extension lock\
+3. \'a0fix for stats issue. (I found stats issues in parallel vacuum patch by debugging, then Amit fixed this)\
+4.\'a0 Need inputs for "RM44053 (Log number of processed statements with edb_log_every_bulk_value)"\
+\
+\'97 from 27/08/2019 till 20/09/2019, I worked into zheap and fixed some bugs.\
+1. [zheap_on_undo] insert query in rowsecurity.sql hangs\
+2. \'a0[zheap_on_undo] TRAP: FailedAssertion("!(( ((void) ((_Bool) (! (!((buffer) <= NBuffers && (buffer) >= -NLocBuffer)) || (ExceptionalCondition("!((buffer) <= NBuffers && (buffer)\
+3. [zheap]: ERROR: \'a0unexpected table_tuple_lock status: 3\
+4. [zheap]: PANIC: couldn't fetch tuple\
+5. \'a0[zheap_on_undo] TRAP: FailedAssertion("!(!TransactionIdPrecedes(urec->uur_prevxid, RecentGlobalXmin))\
+6. \'a0[zheap] : TRAP: FailedAssertion("!((tup_xid == add_to_xid) || (mode == LockTupleKeyShare))", File: "zheapam.c", Line: 4299)\
+7.\'a0 Fixed bug to traverse chain of non inlace updated tuple\
+8. [zheap] TRAP: FailedAssertion("!(((lp)->lp_flags == 2) || ( ((zhtup.t_data->t_infomask & 0x0010 || zhtup.t_data->t_infomask & 0x0040 || zhtup.t_data->t_infomask & 0x0020 || zhtup.t_data->t_infomask\
+9. \'a0[zheap] : TRAP: FailedAssertion("!(((lp)->lp_flags == 1) || ((lp)->lp_flags == 2))", File: "zheapam.c", Line: 2607)\
+10. \'a0[zheap] : FATAL: unexpectedly couldn't allocate 53 bytes in undo log number 6\
+11. \'a0[zheap] : TRAP: FailedAssertion("!(pruned)", File: "zheapamxlog.c", Line: 1850)\
+12. [zheap]: Regression failure with 2 slots (updatable_views.sql) due to notice\
+13. Fixed bugs in zheap_lock_updated_tuple to free tuple and to lock next tuple\
+14.\'a0 Removed unwanted code from zheap_lock_updated_tuple\
+15.\'a0 TRAP: FailedAssertion("!(zinfo.trans_slot != 0x000)", File: "zundo.c", Line: 258\
+\
+Escalations: (these are some import escalations)\
+1. Case:: 998955 | Issue: Query failing with error "invalid memory alloc request size" | Account: Konica Minolta Healthcare Americas, Inc\
+2. Avis: 1046145 : Unable to connect to Database using EFM VIP from different subnet\
+3.\'a0 WAL Sender Process stuck in idle state, 1005451, Mobileum Inc\
+4.\'a0 Sub: PANIC cannot make new WAL entries during recovery | Case No# 915987}

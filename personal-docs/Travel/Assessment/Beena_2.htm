@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://ew24.ultipro.com/pages/utility/PrintPreview.html?USParams=containerIdOrSource=! -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Print Preview</title>
+        <meta http-equiv="CACHE-CONTROL" content="NO-STORE">
+        <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+        <meta http-equiv="PRAGMA" content="NO-CACHE">
+        <meta http-equiv="EXPIRES" content="-1">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./Beena_2_files/bootstrap.css" media="all">
+        <link rel="stylesheet" href="./Beena_2_files/bootstrap-responsive.css" media="all">
+        <link rel="stylesheet" href="./Beena_2_files/USPrintPreview.css" media="all">
+        <link rel="stylesheet" href="./Beena_2_files/USCustomStyles.aspx" media="all">
+        <style type="text/css" media="print">
+            body { margin: 0 0 10px 0;} 
+            .printButton { display: none; }
+        </style>
+        <style type="text/css" media="all">
+            /* Fixes for bootstrap */
+            label, input, button, select, textarea { line-height: inherit; }
+            label { display: inline; margin-bottom: 0; line-height: 1; }
+            h3 { line-height: inherit; }
+            .payStatement .grid td { white-space: nowrap; }
+            td h2, td h3 { page-break-after: auto; }
+            table tr { page-break-inside: auto; }			
+        </style>
+                       
+        <!-- JS -->
+        <script type="text/javascript" src="./Beena_2_files/jquery.min.js"></script>
+		<script type="text/javascript" src="./Beena_2_files/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="./Beena_2_files/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./Beena_2_files/jquery.maxlength.min.js"></script>
+        <script type="text/javascript" src="./Beena_2_files/common.js"></script>
+        <script type="text/javascript" language="javascript" src="./Beena_2_files/UltimateSoftware.jquery.jqprint.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // Get the parameters key/value array from the query string
+                var params = buildArrayFromKeyValueString(window.location.search.replace("?USParams=", ""));
+                var containerIdOrSource = params["containerIdOrSource"];
+                var isAltDomain = false;
+
+                var sourceDocument = null;
+                if (window.opener) {
+                    if (window.opener.name.indexOf("editresubmit") > -1) {
+                        sourceDocument = window.opener.frames[0].document;
+                    }
+                    else if (window.opener.frames["ASP.homecontainer_aspx"]) {
+                        //Handle case where page is opened from alternate domain
+                        sourceDocument = window.opener.frames["ASP.homecontainer_aspx"].frames["ASP._home_aspx"]
+                            .document;
+                        isAltDomain = true;
+                    }
+                    else if (window.opener.frames[2] && window.opener.frames[2].name === "ASP.homecontainer_aspx") {
+                        sourceDocument = window.opener.frames[2].frames[0].document;
+                        isAltDomain = true;
+                    }
+                }
+                // Start document filtering for printing
+                jqPrint.FilterDocumentInPopupWindow(containerIdOrSource, sourceDocument, null, isAltDomain);
+                // Override the overflow:auto only in the notes print preview page
+                if (containerIdOrSource === "PopupLightboxPrintPreview" ||
+                    containerIdOrSource === "HelpPrintPreview" ||
+                    containerIdOrSource === 'MetaPrintPreview')
+                    $("body").css("overflow", "visible");
+
+                if (containerIdOrSource === "PayStatement") {
+                    $("body").addClass("payStatementPage");
+
+                    var webPayStatementIFrame = $("[id$='IFrameContent']");
+                    if (webPayStatementIFrame.length > 0) {
+                        if (typeof params["printMode"] !== "undefined") {
+                            webPayStatementIFrame.attr('src', insertParameterToQueryString(webPayStatementIFrame.attr('src'), 'printMode', params["printMode"]));
+                        }
+
+                        var curIFrame = webPayStatementIFrame[0];
+                        if (curIFrame) {
+                            curIFrame.onload = function () {
+                                curIFrame.style.height = curIFrame.contentWindow.document.body.scrollHeight + 10 + 'px';
+                            }
+
+                            var printBtns = $("[id$='printButton']");
+                            if (printBtns.length > 0) {
+                                printBtns.unbind("click");
+
+                                printBtns.bind("click", function() {
+                                    window.frames["IFrameContent"].focus();
+                                    window.frames["IFrameContent"].print();
+                                });
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            });
+        </script>
+    </head>
+    <body>
+    
+
+<div class="floatR"><input type="button" id="printButton" class="printButton" value="Print" title="print - print this page"><input type="button" id="closeButton" class="printButton" value="Close" title="close - close window"></div><h3>
+	 Dilip  Kumar  - 000283    - EnterpriseDB Corporation
+</h3><h1>Beena  Emerson  - Open Ended Questions </h1><div id="ctl00_containerInnerBootstrapWrapper">
+                    <div id="containerInnerMargin" class="containerInnerMargin printPreview">
+                        <div id="ctl00_DetailEffectiveDateBanner" class="effectiveDating hideVis" style="height: 30px">
+                            <p>
+                                Effective Dating: All changes to this record will be applied on
+                                <strong><span id="ctl00_DetailCurrentEffectiveDate">09/06/2020</span></strong>.
+                            </p>
+                        </div>
+                        
+                        
+                        <div id="ctl00_infoMsg" class="hideVis"></div>
+                        <div id="ctl00_errMsg" class="hideVis"></div>
+                        <div id="ctl00_warnMsg" class="hideVis"></div>
+                        <div id="ctl00_EffectiveDateBanner" class="effectiveDating hideVis">
+                            <h3>
+                                You are viewing this page in Effective Dating Mode</h3>
+                            All information shown is based on data for
+                            <strong><span id="CurrentEffectiveDate">
+                                09/06/2020</span></strong>.&nbsp;
+                            Any changes made will not be applied in the system until this date.<br>
+                            <br>
+                            Change the effective date to
+                            &nbsp;
+                            <span class="usDatePickerSpan dateContainer">09/06/2020</span>
+
+                            <span>OK</span>
+                        </div>
+                        <div id="pendingIcon" class="pendingIcon">
+                            
+                        </div>
+                        
+    <link rel="stylesheet" type="text/css" href="./Beena_2_files/TinyMCE.css">
+    <link rel="stylesheet" type="text/css" href="./Beena_2_files/font-awesome.min.css">
+    <link href="https://ew24.ultipro.com/stylesheets/Talent.css">
+    
+    
+    
+
+
+<div id="ctl00_Content_RequireJS_scriptPlaceHolder"></div>
+
+    <span id="ctl00_Content_ProcessManager"></span>
+    
+    
+    <div id="divPMOpenEndedQuestions">
+     
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_lblQuestionSortOrder">1.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_lblQuestionText">1. (For employee) Describe at least three of your most important contributions during the past year and why they were important: - Document evidence on minimum 3 major goals achieved for the year</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>NA</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl00_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Beena  Emerson</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>I was a speaker in Pgconf India and EDB&nbsp;Webinar.</p>
+<p>I have published 3 blogs on the EDB&nbsp;website and addressed a total of 10 escalations.</p>
+<p>&nbsp;</p>
+<p>Tasks I have worked on:</p>
+<p>Three redwood compatibility features -</p>
+<p>1. sub partitions&nbsp;number template:&nbsp;a project which was done from scratch to allow auto creation of hash partitions by just specifying a number.</p>
+<p>&nbsp;</p>
+<p>2. split partition behavior: Traditionally, split partition&nbsp;would only create 1 sub partition&nbsp;in the two newly split partition. I updated it to be more redwood-like so that it imitated the parent partition structure within&nbsp;each of the newly split partition.</p>
+<p>&nbsp;</p>
+<p>3.&nbsp;dbms_output display: PPAS&nbsp;default output behavior&nbsp;was different from that of Oracle. Hence, a GUC was added so that those wanting strictly Redwood style output can set it before server start.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Few other works</p>
+<p>&gt;&gt; Bug in drop trigger by name</p>
+<p>We allow dropping trigger by name for redwood compatibility&nbsp;but all children of partition table have the same name and are dropped when the parent is dropped causing the command to throw error when it tries to drop trigger for child tables.</p>
+<p>&nbsp;</p>
+<p>&gt;&gt; Execute empty statements&nbsp;in expired accounts</p>
+<p>This was a customer escalation. Initially, we only allowed password change statement in expired accounts.</p>
+<p>&nbsp;</p>
+<p>&gt;&gt; Crash in oci_link.</p>
+<p>The list traversal method was updated on postgresql and so the code had to be changed to account for that.</p>
+<p>&nbsp;</p>
+<p>I have also worked on few other bugs and reviews.</p>
+<p>&nbsp;</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_lblQuestionSortOrder">2.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_lblQuestionText">2. (For employee) Describe at least three job related strengths you exhibit on a regular basis, and why they are central to your role:</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>NA</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl01_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Beena  Emerson</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>1. Versatility&nbsp; and Flexibility</p>
+<p>I have handled work from different&nbsp;parts of code with ease. Worked with members across various teams like documentation&nbsp;and QA changing my style of communication so that they are able to follow what I have to say.&nbsp;</p>
+<p>&nbsp;</p>
+<p>2.&nbsp;Determination</p>
+<p>Even with a possibilty of partitions number work spilling over to next release cycle, I have worked with determination&nbsp; and successfully coded and addressed all comments to get it committed in time.</p>
+<p>&nbsp;</p>
+<p>3. Enthusiasm</p>
+<p>I can take in all comments and work on them without loss of enthusiasm, focusing on the goal at hand.</p>
+<p>&nbsp;</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_lblQuestionSortOrder">3.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_lblQuestionText">3. (For employee) How can your manager best support you in your experience at EDB</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>NA</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl02_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Beena  Emerson</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>We already have a good working relationship&nbsp;with proper support.&nbsp;</p>
+<p>I think a little more clarity on what&nbsp;more tasks is considered or what is expected of me in the future&nbsp;would be helpful.&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_lblQuestionSortOrder">4.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_lblQuestionText">4. (For employee) List 2-3 ideas/topics you would like to discuss during your Performance Review.</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>NA</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl03_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Beena  Emerson</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>Since we will be in WFH mode for quite some time, how can we improve the experience&nbsp;as&nbsp;a team?</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_lblQuestionSortOrder">5.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_lblQuestionText">5. (For employee) Professional Development - please list anything that would contribute to your professional and personal growth</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>NA</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl04_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Beena  Emerson</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>- A team activity that can help bond with the new joinees&nbsp;will help ensure better relationship with them.</p>
+<p>&nbsp;</p>
+<p>-&nbsp;With the current WFH scenario,&nbsp; there should&nbsp;be some arrangement to ensure that work is ongoing till laptop is serviced. Sometimes it takes longer than a week.&nbsp;</p>
+<p>&gt; a full remote setup which&nbsp;can be remotely accessed</p>
+<p>&gt; easy access a temporary laptop.</p>
+<p>&gt; Some tasks that need not require a setup.&nbsp;</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_lblQuestionSortOrder">6.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_lblQuestionText">6. (For manager) Describe at least three of the employee’s key responsibilities of their role during the past year and why they were important</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>- Beena&nbsp;has handled&nbsp;many escalations related to the partitioning in last year,&nbsp; that shows her customer focus and which is utmost&nbsp;important for the organizational&nbsp;growth.</p>
+<p>- Beena, has worked on many important patches and delivered them on time e.g.</p>
+<p>a) sub partitions&nbsp;number template</p>
+<p>b)&nbsp;split partition behavior</p>
+<p>c)&nbsp;dbms_output display</p>
+<p>&nbsp;</p>
+<p>- She has represented the company in Pgconf&nbsp;India&nbsp;by presenting a paper on partitioning and her talk was outstanding.</p>
+<p>- She has written many blogs for EnterpriseDB and participated in EDB&nbsp;Webinar.</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl05_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Beena  Emerson</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>n/a</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_lblQuestionSortOrder">7.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_lblQuestionText">7. (For manager) Describe at least three job related strengths this employee exhibits on a regular basis, and why they are central to their role</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>- Outstanding verbal and written communication skills.</p>
+<p>&nbsp;</p>
+<p>- She always does very detailed analysis before starting the work.&nbsp; Her analysis document and JIRA&nbsp;updates are very clear.&nbsp; Which&nbsp; makes it&nbsp;easy for others to understand the design early.</p>
+<p>&nbsp;</p>
+<p>- She is very good team player and always ready to help others.&nbsp;</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl06_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Beena  Emerson</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>n/a</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+                <div style="width:100%; height:100%">
+                    
+<style>
+    .containerDiv{
+        width:100%;
+        padding-top:10px;
+        padding-bottom:10px;
+        height:100%;
+        display:inline-block;
+    }
+    .orderNumber{
+        width:3%;
+        text-align:right;
+        float:left;
+        height:100%;
+        padding-top:3px;
+    }
+    .questionContent{
+        width:96%;
+        float:right;
+        height:100%;
+    }
+    .required span{
+        padding-left:15px;
+    }
+
+    .ansewersLeft{
+        width:15%;
+        text-align:left;
+        float:left;
+        height:100%;
+    }
+
+    .answersRight{
+        width:84%;
+        float:right;
+        height:100%;
+    }
+
+    .answersCenter{
+        width:100%;
+        height:100%;
+    }
+
+    .row{
+        display:flex;
+        height:100%;
+    }
+
+    .enabledAnswer{
+        padding-bottom:30px;
+    }
+
+    .disabledAnswer{
+        padding-top:30px;
+        padding-bottom:30px;
+    }
+
+    .hide{
+        display:none;
+    }
+</style>
+<div class="containerDiv">
+    <div class="orderNumber textRequired">
+        <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_lblQuestionSortOrder">8.</span>
+    </div>
+    <div class="questionContent">
+        <div class="row" style="width:100%">
+            <div class="banner togglePanelSmExpanded" id="questionHeader" style="width:100%; cursor:pointer; font-weight:bold">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_divRequired" class="required" style="float:left">
+                    <span></span>
+                </div>
+                <span id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_lblQuestionText">8. (For manager) Describe areas for continuous growth and improvement related to employee’s current job activities</span>
+             </div>
+         </div>
+        <div class="containerDiv" id="divQuestionContainer">
+            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_divCurrentAnswer" class="row enabledAnswer">
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_divCurrentAnswerLeft" class="ansewersLeft">
+                    <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_NameAndRelationshipDisplay">
+	
+                        <strong>Dilip  Kumar</strong>, Manager
+                    
+</div>
+                </div>
+                <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_divCurrentAnswerRight" class="answersRight">
+                    <span class="printInterpretHtml mce-content-body talentReview" style="display: block; width: 100%;"><p>As&nbsp;Beena has gained deep knowledge on the partitioning, she needs to widen her knowledge and try to learn and get involved in other modules as well.</p></span> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+             
+                    <div id="answerContent" class="row disabledAnswer">
+                        <div class="ansewersLeft">
+                            <div id="ctl00_Content_OpenEndedQuestionsRepeater_ctl07_questionInfo_OtherAnswersRepeater_ctl00_NameAndRelationshipDisplay">
+	
+                                <strong>Beena  Emerson</strong>, Employee
+                            
+</div>
+                        </div>
+                        <div class="answersRight">
+                            <p>n/a</p>
+                        </div>
+                    </div>
+                
+        </div>
+    </div>  
+</div>
+
+                </div>
+            
+     </div>
+
+                        
+                        
+<style type="text/css">
+    .labelEditingBlock {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: white;
+        /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80) !important";
+        /* IE 5-7 */
+        filter: alpha(opacity=80) !important;
+        /* Netscape */
+        -moz-opacity: 0.80 !important;
+        /* Safari 1.x */
+        -khtml-opacity: 0.80 !important;
+        /* Good browsers */
+        opacity: 0.80 !important;
+        overflow: hidden;
+    }
+    
+    .localizableLabel {
+        position: relative;
+        z-index: 1001;
+    }
+    
+    .editLabelButton {
+        text-decoration: underline !important;
+        color: rgb(0, 73, 144) !important;
+        margin-left: 10px;
+        cursor: pointer;
+        font-weight: normal;
+    }
+    
+    #labelEditingModal .modal-header {
+        padding-bottom: 20px;
+        padding-top: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    #labeleditingbuttons {
+        padding-right: 0px;
+        float: right;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-right: 16px;
+    }
+    
+    .container-fluid #labeleditingbuttons {
+        margin-right: 0;
+    }
+    
+    #labeleditingbuttons .buttonContainer {
+        float: left;
+        text-align: center;
+        margin-left: 5px;
+    }
+    
+    #labeleditingbuttons .buttonContainer label {
+        text-align: center;
+        margin: 0;
+        padding: 1px 0 0 0;
+        text-transform: lowercase;
+        display: block;
+        font-size: 9px;
+        line-height: normal;
+        color: #666;
+        font-family: 'museo_sans300', Helvetica, Arial, sans-serif;
+    }
+    
+    #labeleditingbuttons .buttonContainer button:disabled {
+         /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        /* IE 5-7 */
+        filter: alpha(opacity=30);
+        /* Netscape */
+        -moz-opacity: 0.30;
+        /* Safari 1.x */
+        -khtml-opacity: 0.30;
+        /* Good browsers */
+        opacity: 0.30;
+    }
+    
+    #labeleditingbuttons .buttonContainer input, #labeleditingbuttons .buttonContainer button {
+        width: 32px;
+        height: 32px;
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #labeleditingbuttons img {
+        float: left;
+        margin: 5px 2px 0 5px;
+    }
+    
+    #labeleditingbuttons #toggleRight {
+        float: left;
+    }
+    
+    #labeleditingbuttons #toggleRight.hide {
+        width: 10px;
+        display: inline-block;
+        visibility: hidden;
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    #labelEditingModal .alert-error ul li {
+        list-style-type: disc;
+    }
+    
+    .labelrequired {
+        background-position: 0px 12px;
+        padding-left: 10px;
+        background-image: url(../../images/required.gif);
+        background-repeat: no-repeat;
+    }
+    
+    .invalidtranslation {
+         border: 1px solid red !important;
+    }
+</style>
+<div id="labelEditingModal" class="tbs">
+    
+</div>
+                        <label id="ctl00_DebugCode" class="debug"></label>
+                    </div>
+                </div></body></html>

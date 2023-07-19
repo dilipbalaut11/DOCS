@@ -1,0 +1,17 @@
+pldebugger=# select * from plsql_profiler_rawdata;
+ runid | sourcecode | func_oid | line_number | exec_count | tuples_returned | time_total | time_shortest | time_longest | num_scans | tuples_fetched | tuples_
+inserted | tuples_updated | tuples_deleted | blocks_fetched | blocks_hit | wal_write | wal_flush | wal_file_sync | buffer_free_list_lock_acquire | shmem_index
+_lock_acquire | oid_gen_lock_acquire | xid_gen_lock_acquire | proc_array_lock_acquire | sinval_lock_acquire | freespace_lock_acquire | wal_buffer_mapping_lock
+_acquire | wal_write_lock_acquire | control_file_lock_acquire | checkpoint_lock_acquire | clog_control_lock_acquire | subtrans_control_lock_acquire | multi_xa
+ct_gen_lock_acquire | multi_xact_offset_lock_acquire | multi_xact_member_lock_acquire | rel_cache_init_lock_acquire | bgwriter_communication_lock_acquire | tw
+o_phase_state_lock_acquire | tablespace_create_lock_acquire | btree_vacuum_lock_acquire | add_in_shmem_lock_acquire | autovacuum_lock_acquire | autovacuum_sch
+edule_lock_acquire | syncscan_lock_acquire | icache_lock_acquire | breakpoint_lock_acquire | lwlock_acquire | db_file_read | db_file_write | db_file_sync | db
+_file_extend | sql_parse | query_plan | infinitecache_read | infinitecache_write | wal_write_time | wal_flush_time | wal_file_sync_time | buffer_free_list_loc
+k_acquire_time | shmem_index_lock_acquire_time | oid_gen_lock_acquire_time | xid_gen_lock_acquire_time | proc_array_lock_acquire_time | sinval_lock_acquire_ti
+me | freespace_lock_acquire_time | wal_buffer_mapping_lock_acquire_time | wal_write_lock_acquire_time | control_file_lock_acquire_time | checkpoint_lock_acqui
+re_time | clog_control_lock_acquire_time | subtrans_control_lock_acquire_time | multi_xact_gen_lock_acquire_time | multi_xact_offset_lock_acquire_time | multi
+_xact_member_lock_acquire_time | rel_cache_init_lock_acquire_time | bgwriter_communication_lock_acquire_time | two_phase_state_lock_acquire_time | tablespace_
+create_lock_acquire_time | btree_vacuum_lock_acquire_time | add_in_shmem_lock_acquire_time | autovacuum_lock_acquire_time | autovacuum_schedule_lock_acquire_t
+ime | syncscan_lock_acquire_time | icache_lock_acquire_time | breakpoint_lock_acquire_time | lwlock_acquire_time | db_file_read_time | db_file_write_time | db
+_file_sync_time | db_file_extend_time | sql_parse_time | query_plan_time | infinitecache_read_time | infinitecache_write_time | totalwaits | totalwaittime 
+-s

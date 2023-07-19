@@ -1,0 +1,137 @@
+set timezone=0;
+Exec DBMS_OUTPUT.ENABLE;
+EXEC DBMS_OUTPUT.SERVEROUTPUT(true);
+create or replace procedure pro is
+begin
+	dbms_output.put_line( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2003-03-01 08:25:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss')) ;
+	DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2008-03-32 07:30:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+	DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2005-05-31 09:40:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );	
+	DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2004-06-30 10:45:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+	DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2003-07-31 11:50:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+end;
+exec pro;
+2003-03-31 08:25:33
+2008-04-30 07:30:33
+2005-05-31 09:40:33
+2004-06-30 10:45:33
+2003-07-31 11:50:33
+drop procedure pro;
+create or replace procedure pro is
+begin
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2007-08-31 12:55:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2008-09-30 13:59:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2099-10-31 14:00:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2008-02-15 15:01:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2010-12-31 16:10:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2016-02-29 17:25:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+end;
+exec pro;
+2007-08-31 12:55:33
+2008-09-30 13:59:33
+2099-10-31 14:00:33
+2008-02-29 15:01:33
+2010-12-31 16:10:33
+2016-02-29 17:25:33
+drop procedure pro;
+create or replace procedure pro is
+begin
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2020-02-28 18:30:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2040-02-01 00:00:10','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2080-02-01 20:39:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('2015-05-31 09:40:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('2020-08-31 12:55:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('2011-09-30 13:59:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1999-10-31 14:00:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+end;
+exec pro;
+2020-02-29 18:30:33
+2040-02-29 00:00:10
+2080-02-29 20:39:33
+2015-05-31 09:40:33
+2020-08-31 12:55:33
+2011-09-30 13:59:33
+1999-10-31 14:00:33
+drop procedure pro;
+create or replace procedure pro is
+begin
+
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1998-11-30 15:01:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1997-12-31 16:10:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1996-01-31 17:25:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1995-02-28 18:30:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1994-03-31 19:35:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1993-04-30 20:39:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+end;
+exec pro;
+1998-11-30 15:01:33
+1997-12-31 16:10:33
+1996-01-31 17:25:33
+1995-02-28 18:30:33
+1994-03-31 19:35:33
+1993-04-30 20:39:33
+drop procedure pro;
+create or replace procedure pro is
+begin
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1998-11-30 23:59:59','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1997-12-31 23:59:00','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1996-01-31 01:00:00','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1998-11-30 12:59:59','yyyy-mm-dd hh12:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1997-12-31 11:59:00','yyyy-mm-dd hh12:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1996-01-31 01:00:00','yyyy-mm-dd hh12:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1995-02-28 06:30:33','yyyy-mm-dd hh12:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('2004-02-28 12:59:59','yyyy-mm-dd hh12:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+end;
+exec pro;
+1998-11-30 23:59:59
+1997-12-31 23:59:00
+1996-01-31 01:00:00
+1998-11-30 12:59:59
+1997-12-31 11:59:00
+1996-01-31 01:00:00
+1995-02-28 06:30:33
+2004-02-29 12:59:59
+drop procedure pro;
+create or replace procedure pro is
+begin
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1993-04-30 07:39:33','yyyy-mm-dd hh12:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_DATE('1993-12-30 9:39:33','yyyy-mm-dd hh12:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2005-05-31 09:40:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2004-06-30 10:45:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+end;
+exec pro;
+1993-04-30 07:39:33
+1993-12-31 09:39:33
+2005-05-31 09:40:33
+2004-06-30 10:45:33
+drop procedure pro;
+create or replace procedure pro is
+begin
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2003-07-31 11:50:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2007-08-31 12:55:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2008-09-30 13:59:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2099-10-31 14:00:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2008-02-15 15:01:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+end;
+exec pro;
+2003-07-31 11:50:33
+2007-08-31 12:55:33
+2008-09-30 13:59:33
+2099-10-31 14:00:33
+2008-02-29 15:01:33
+drop procedure pro;
+create or replace procedure pro is
+begin
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2010-12-31 16:10:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2016-02-29 17:25:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2020-02-28 18:30:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2040-02-01 00:00:10','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+DBMS_OUTPUT.PUT_LINE( TO_CHAR(LAST_DAY(TO_TIMESTAMP('2080-02-01 20:39:33','yyyy-mm-dd hh24:mi:ss')),'yyyy-mm-dd hh24:mi:ss') );
+end;
+exec pro;
+2010-12-31 16:10:33
+2016-02-29 17:25:33
+2020-02-29 18:30:33
+2040-02-29 00:00:10
+2080-02-29 20:39:33
+drop procedure pro;
+reset timezone;

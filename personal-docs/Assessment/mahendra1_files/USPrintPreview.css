@@ -1,0 +1,362 @@
+﻿/************************************************************************************************/
+/* USPrintPreviewStyles - last update 05/24/2011 2:54pm DPM */  
+/************************************************************************************************/
+
+/* @import url(USMainStyles.min.css); */
+@import url(USMainStyles.css);
+
+/* Override Main Styles properties */
+.printPreview .twoColL td label, .printPreview .twoColR td label, .printPreview .oneCol td label, .printPreview .columnLayout label, .printPreview .fullLayout label, .printPreview .twoColL td input[type="text"], .printPreview .twoColR td input[type="text"], .printPreview .oneCol td input[type="text"], .printPreview .columnLayout input[type="text"], .printPreview .fullLayout input[type="text"], .printPreview .twoColL td select, .printPreview .twoColR td select, .printPreview .oneCol td select, .printPreview .columnLayout select, .printPreview .fullLayout select, .printPreview .twoColL td textarea, .printPreview .twoColR td textarea, .printPreview .oneCol td textarea, .printPreview .columnLayout textarea, .printPreview .fullLayout textarea, .printPreview .twoColL td + td label, .printPreview .twoColR td + td label, .printPreview .oneCol td + td label, .printPreview .columnLayout label + label, .printPreview .fullLayout label + label, .printPreview .oneCol td input[type="radio"] + label, .printPreview .twoColL td input[type="radio"] + label, .printPreview .twoColR td input[type="radio"] + label,
+.grid span {font-size:10pt; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+.printPreview .containerInner h2, .printPreview .wizardAltContainerInner h2, .printPreview .wizardAltContainerInner h2 label, .printPreview .containerInner caption, .printPreview .containerInner caption label, .printPreview .containerInner h2 label, .printPreview h2.banner, .printPreview h2.banner label, .printPreview h2.banner span, .printPreview .containerInner h2 span, .printPreview .containerInner td h2 label, .printPreview h2.ContentBoxTitle, .printPreview h2.ContentBoxTitle label, .printPreview .contentBoxHead h2, .printPreview .boxHead h2, .printPreview .contentBoxHead h2 label, .printPreview .boxHead h2 label, .mce-content-body h2, .mce-content-body h2 span
+{font-size: 14pt; line-height: 1.5em; margin-left: 0;font-weight: bold; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+.printPreview .containerInner h3, .printPreview .wizardAltContainerInner h3, .printPreview .wizardAltContainerInner h3 label, .printPreview .containerInner caption, .printPreview .containerInner caption label, .printPreview .containerInner h3 label, .printPreview h3.banner, .printPreview h3.banner label, .printPreview h3.banner span, .printPreview .containerInner h3 span, .printPreview .containerInner td h3 label, .printPreview h3.ContentBoxTitle, .printPreview h3.ContentBoxTitle label, .printPreview .contentBoxHead h3, .printPreview .boxHead h3, .printPreview .contentBoxHead h3 label, .printPreview .boxHead h3 label, .mce-content-body h3, .mce-content-body h3 span 
+{font-size: 13pt; line-height: 1.4em; margin-left: 0;font-weight: bold; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+.grid a, .grid span, .grid li, .grid .show, .grid th a
+{font-size: 10pt; line-height: 1.1em;}
+
+.listViewFilter li span {padding: 0 5px;}
+
+.listViewFilter li.selectedFilter span {color: #fff;}
+
+html, body, td, th, select, input, address, p, label, div, span, li, strong {font-size:10pt; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+body, html {overflow: visible;background-color: White;/*position: static;*/}
+.frmROE, .containerInnerMargin,.containerInner,.contentContainer, .contentIframeHome, .contentIframeChild, .no-scroll  {overflow: visible;}
+body, html
+{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: White;
+}
+
+body, html, td, th, select, input, textarea, h2, label, fieldset, legend, .filter input, .button, .filter label, b, a, a:visited, a:hover, .filter select td select, option, .grid td, .grid th{font-size: 10pt;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+body {margin: 20px; line-height: 1.1em;}
+
+a, a:visited, a:hover {color: Black; text-decoration: none; cursor: text;}
+
+.containerInnerMargin {overflow:auto;}
+
+
+th, td, select, input, h2 { 
+}
+p strong label {font-weight: bold;}
+p label{font-weight:normal;}
+
+.twoColL, .twoColR {width: auto;float: left;}
+.oneCol td, .twoColL td, .twoColR td {width: auto; padding: 0 20px 5px 0;}
+div.twoColL, div.twoColR {display: block; float: none;clear: both;}
+
+.debug {display: none;}
+img {display: none;}
+img.PrintMe { display: inline; }
+
+#w2Container .turboTaxQRCode { display: inline; }
+
+img#companyLogo { display: block; margin-left: -5px; }
+.dateInputContainer input {border: none;width: auto;}
+
+
+/*h1 {font-size: 1.4em; font-weight: normal;letter-spacing: 1px;}
+h3 {font-size: .7em;font-weight: normal; }*/
+
+.right {text-align: right;}
+.left {text-align: left;}
+.floatR {float: right;}
+.containerInnerMargin {margin: 0;}
+.paging input, .paging select, .paging label, .paging strong {font-size: 10pt;border: 0;font-weight: normal;}
+
+address {font-size: 10pt;}
+h1 {font-size: 16pt; font-weight: bold; letter-spacing: 1px;line-height: 1.7em;margin: 10px 0 10px 0;padding: 0;}
+h2, h2.banner, h2.banner label, h2 label, caption {font-size: 14pt; line-height: 1.5em; margin-left: 0;font-weight: bold;}
+h2 #divShowHideFields label {font-size: 10pt;}
+h3 {font-size: 13pt; line-height: 1.4em; margin-left: 0;font-weight: bold;}
+h4 {font-size: 12pt; line-height: 1.3em; margin-left: 0;font-weight: bold;}
+h5 {font-size: 11pt; line-height: 1.2em; margin-left: 0;font-weight: bold;}
+h6 {font-size: 10pt; line-height: 1.1em; margin-left: 0;font-weight: bold;}
+
+h2, caption, h2.banner {font-weight: normal;}
+
+.printButton {font-size: 10pt;}
+
+/* grid */
+/*
+.grid thead th a:hover, .grid thead th:hover a {background-color: #ededed; border-bottom: 3px solid #ddd; color: #000;	background-image:url(../images/brdrRgt.gif); 
+    background-position: bottom right; 
+    background-repeat:no-repeat;
+}*/
+
+.colMenu, ul.colMenu, .hide  {display: none;}
+.grid td {border: none;}
+.grid td, .ui-jqgrid-btable td, .grid th {border-bottom: 1px solid #ccc;}
+.ui-jqgrid-btable tbody tr:nth-child(odd){background-color:#F5F5F5;}
+.ui-jqgrid-btable tr.jqgfirstrow td {border-bottom:none; background-color:white;}
+.ui-pg-table .ui-pg-table {display:none;}
+
+.grid thead th,  .ui-jqgrid thead th, .grid thead th:hover, .ui-jqgrid thead th:hover {border-bottom: 1px solid #000;background-color: Transparent;background-image: none; font-weight:bold;}
+.grid thead th a, .grid thead th a:hover {border: 0;background-color: Transparent;}
+.grid thead th a, .grid thead th a:hover {padding: 0;}
+
+.grid thead tr th, .ui-jqgrid thead tr th, .grid tbody tr td, .ui-jqgrid tbody tr td {padding: 3px 3px 3px 0}
+
+.grid .altShading {background-color: Transparent;}
+
+div.gridContainer {border: 0;}
+.gridContainer table.grid {border: 0; width: auto;}
+.gridContainer table.grid thead tr th {width: auto;border-bottom: 1px solid #000;border-top: 1px solid #000;background-color: Transparent;background-image: none;padding: 5px 20px 5px 0;}
+.gridContainer table.grid thead tr th a,   * html .gridContainer table.grid thead tr th a,   * html .gridContainer table.grid thead tr th a:visited {padding: 0;width: auto;border: none;background-color: Transparent;background-image: none;}
+.gridContainer table.grid thead tr th a:hover,  * html .gridContainer table.grid thead tr th a:hover {border: none;padding: 0;}
+.gridContainer table.grid tbody tr td {width: auto;vertical-align: top;padding: 3px 20px 3px 0;}
+span.sortAscend, span.sortDescend, span.sortAscending, span.sortDescending {display: none;}
+table.grid thead tr th {border: 0; background-color: Transparent;}
+div.gridContainer {background-color: Transparent;}
+/* end grid */
+
+div.filter {background-color: Transparent;width: 100%;}
+div.filter .dropDownReplaced {display: none;}
+div.filter label, div.filter div a, div.filter table {display: none;}
+.filter input, .filter select {display: none;}
+.filter table td {border-bottom: 0px solid #ccc;}
+.paging div.floatR {display: none;}
+.paging input {padding: 0; text-align: left;}
+.containerInnerMargin input {border: 0px;}
+td.required {padding-left: 5px;}
+textarea {border: 0;overflow: visible;}
+/* ROE */
+.frmROE h2 {border: 0;margin: 0;padding: 0;}
+.frmROE img {display: inline;}
+.dateContainer {border: 0;padding: 0;}
+/*.frmROE textarea, .frmROE input, .frmROE select, .dropDownReplaced {font-family: Monospace;font-size: 10pt;}*/
+.ROEHeader {margin-top:10px;}
+.pageBreakBefore {page-break-before:always;}
+.pageBreakAfter {page-break-after:always;}
+
+.frmROE table td div.radio label, .frmROE table td div.radio span, .frmROE table td div.radio input  {float: left;}
+
+/* pay statement */
+
+table.payStatement {width: 96%;margin: 0 0 5px 0;border: 1px solid #999;border-collapse: collapse;}
+.payStatement .gridContainer {background-color: Transparent;width: 100%;}
+.payStatement h2 {margin: 0; border-bottom: 1px solid #999;border-top: 1px solid #999}
+.payStatement h2, .payStatement h2.banner {margin: 0;}
+.payStatement td {vertical-align: top;padding: 0 0 5px 0;}
+table.payStatement b {font-size: 10px;}
+.payStatement td td {padding: 0;}
+.payStatement .gridContainer {border: 0;}
+.payStatement table.grid {width: 100%;margin-bottom: 10px;}
+.payStatement table.grid thead tr th {background-color: Transparent; border: 0;}
+.payStatement table.grid thead tr th {border-bottom: 1px solid #ddd;}
+.payStatement table.grid tbody tr.altShading td {background-color: white;border: 0;}
+.payStatement table.grid tbody tr.altShading {border: 0;}
+.payStatement table.grid tbody tr td, .payStatement table.grid thead tr th {padding: 2px}
+.payStatement table.grid thead tr th.right {text-align: right;}
+.payStatementBorderRight {border-right: 1px solid #999;}
+
+span.dateInputContainer, span.dateInputContainer span {white-space: nowrap;}
+.frmROE span, .frmROE td, .frmROE input, .frmROE select, .frmROE label, .frmROE {font-size: 7pt;}
+
+h2.banner, h2 {border-bottom: 1px solid #ccc; background-color: Transparent;margin: 5px 0 15px 0;font-size: 1em;padding-bottom: 5px; font-weight: bold;}
+h2.banner label, h2 label {font-weight: bold;}
+.banner {background-color: #ededed;}
+
+.noPrint, div.noPrint, span.noPrint, tr.noPrint td {display: none;}
+
+/*styles for printing of W2C form*/
+div.w2cForm table td,div.w2cForm table td div.w2cPartDataT,div.w2cForm table td b,div.w2cForm table td div.w2cPartData,div.w2cForm table td .w2cPartHeadingSmall,
+div.w2cForm table td .w2cNote,div.w2cForm table td .w2cPartHeadingL,div.w2cForm table td div.w2cCopy,div.w2cForm table td div.w2cLastNameData{font-size:7pt;}
+div.w2cForm table td .w2cPartLabel{padding-right:1px;}
+div.w2cForm table td.w2cPartHeadingL,div.w2cForm table td.w2cPartLabel{padding-left:2px; padding-right:1px;}
+div.w2cForm table td.w2cPartLabel{width:15px;}
+
+@-moz-document url-prefix() {
+    div.w2cForm table td,div.w2cForm table td div.w2cPartDataT,div.w2cForm table td b,div.w2cForm table td div.w2cPartData,div.w2cForm table td .w2cPartHeadingSmall,
+    div.w2cForm table td .w2cNote,div.w2cForm table td .w2cPartHeadingL,div.w2cForm table td div.w2cCopy,div.w2cForm table td div.w2cLastNameData {
+        font-size:8pt;
+    }
+}
+
+
+
+
+.containerInnerMargin{overflow:visible; min-width:47%; max-width:800px;}
+
+/* styles for performance management - review form */
+fieldset.contributors {background: none;padding: 0;margin-bottom: 2em;}
+fieldset.contributors li {margin-left: 0;} 
+.controlPanel {margin-top: 0;}
+.controlPanel fieldset {border: none;background: none;margin-top: 2em;padding: 0;}
+.controlPanel fieldset h2, .controlPanel fieldset h2 label  {font-weight: bold;}
+.controlPanel fieldset h3 {margin-left: .1em}
+.controlPanel fieldset p label {font-weight: normal;}
+.controlPanel .sectionHighlight {background: none;padding: 0;margin: 0;}
+.controlPanel fieldset .fieldsetToolbar li input {display: none;}
+.controlPanel fieldset div.margin1 {margin: 0;}
+.controlPanel fieldset div.sectionPanel {border: none; white-space: pre-line}
+
+/* goals and comps and dev planning pages */
+fieldset.sectionWeight {background: none;}
+.sectionWeight legend {margin: 0;}
+.DevelopmentPlanning .columnLayout {float: none;white-space: normal;width: auto; min-width: 0;}
+.DevelopmentPlanning .columnLayout label {display: block;width: auto;float: none;}
+
+/*Remove cursor from toggle panels */
+h2.togglePanel { cursor:default; }
+
+.personalProfile .employeeJobTitle { color:#000; }
+.personalProfile .employeeName { border:none; }
+
+span.effectiveDateGroup 
+{
+    position: relative;
+    left: -10px;
+}
+
+span.effectiveDate
+{
+    position: relative;
+    left: 5px;
+}
+
+.mce-content-body p { margin-top: 0px; }
+.mce-content-body h2, .mce-content-body h2 span { border-bottom: inherit; margin: inherit }
+.mce-content-body { line-height: normal }
+
+hr 
+{
+    border-color: #5a5a5a;
+}
+
+div.twoColL table td span+label { display: inline; }
+
+.blogPage .listViewFilter li label {font-size:10pt; line-height: 1em;} 
+.unit h2 label {font-size: 10pt; line-height: 1em;}
+
+#MetaInnerContainer span
+{
+    position: relative;
+    top: 5px;
+}
+
+#MetaInnerContainer .usDatePickerSpan {
+    padding-left: 0 !important;    
+}
+
+label {
+    font-size: 8pt;
+    font-family: Verdana, Sans-Serif;
+    font-weight: bold;
+}
+
+.grid label {
+     font-size: 8pt;
+}
+#MetaInnerContainer label b { font-size: 1em; }
+
+#MetaInnerContainer pre { background: transparent; }
+
+#MetaInnerContainer .table-bordered { border: 1px solid transparent; }
+
+#MetaInnerContainer .table-bordered * { border-left: 1px solid transparent; }
+
+#MetaInnerContainer div.control-group {
+    margin-bottom: 15px;
+    min-height: 13px;
+}
+
+#MetaInnerContainer div.control-group div.controls div span {
+    top: -3px;
+    vertical-align: middle;
+}
+
+#MetaInnerContainer div.control-group div.controls div.required {
+    padding-left: 15px;
+    margin-left: -15px;
+}
+
+#MetaInnerContainer div.control-group div.controls div span label {
+    vertical-align: middle;
+    display: block;
+    color: #5a5a5a;
+}
+
+#MetaInnerContainer div.control-group div.controls div input[type="checkbox"] {
+    top: -3px;
+    vertical-align: middle;
+}
+
+#MetaInnerContainer div.controls label, #MetaInnerContainer div.control-group label.control-label {
+    font-weight: normal;
+    text-align: left;
+    padding-top: 0;
+    font-family: Helvetica;
+}
+
+#MetaInnerContainer div.control-group label.control-label {
+    font-size: 10pt;
+    font-family: Helvetica;
+}
+
+#MetaInnerContainer h2 > label {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+#MetaInnerContainer table.grid {
+    margin-bottom: 15px;
+}
+
+#MetaInnerContainer div.legacyRequired {
+    margin-left: 0;
+    padding-left: 0;
+    background-position: 3px 3px;
+}
+
+#MetaInnerContainer .legacy-printgroup {
+    margin-bottom: 15px;
+    margin-left: 5px;
+}
+
+#MetaInnerContainer .legacy-printgroup > label {
+    font-weight: normal;
+    font-size: 10pt;
+    font-family: Helvetica;
+}
+
+#MetaInnerContainer .legacy-printgroup > div {
+    margin-left: 180px;
+}
+
+#MetaInnerContainer .legacy-printgroup > div > span {
+    top: -3px;
+    padding-left: 15px;
+    vertical-align: middle;
+}
+
+/*
+#MetaInnerContainer .controls > div {
+    position: relative;
+}
+
+#MetaInnerContainer .controls div > span.wrap {
+    position: absolute;
+    word-break: break-all;
+}
+*/
+
+
+/*#MetaInnerContainer .row-fluid .span6 {
+    width: 46%;
+}*/
+
+body.payStatementPage { color: #5a5a5a; margin: 0px; }
+body.payStatementPage  > h1 { font-size: 12pt; line-height: 1.1em; margin: 0; }
+body.payStatementPage h2.banner { padding: 0 5px; line-height: 1.1em; vertical-align: middle; }
+body.payStatementPage h2.banner label { vertical-align: middle; }
+table.payStatement label { font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+@media print {
+  @page {
+    size: letter portrait;
+    margin: 12mm;
+  }
+}

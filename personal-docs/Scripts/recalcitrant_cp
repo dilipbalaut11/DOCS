@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+
+use File::Copy;
+
+die "wrong number of arguments" if @ARGV != 2;
+my ($source, $target) = @ARGV;
+die "I categorically refuse to copy anything but a history file!"
+	if $source !~ /history/;
+copy($source, $target) or die "couldn't copy $source to $target: $!";

@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Print Preview</title>
+        <meta http-equiv="CACHE-CONTROL" content="NO-STORE" />
+        <meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+        <meta http-equiv="PRAGMA" content="NO-CACHE" />
+        <meta http-equiv="EXPIRES" content="-1" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap.css" media="all" />
+        <link rel="stylesheet" href="../../lib/bootstrap/css/bootstrap-responsive.css" media="all" />
+        <link rel="stylesheet" href="../../stylesheets/USPrintPreview.css" media="all" />
+        <link rel="stylesheet" href="../../stylesheets/USCustomStyles.aspx" media="all" />
+        <link type="text/css" rel="stylesheet" href="../../stylesheets/theming/fonts.css" />
+        <style type='text/css' media='print'>
+            body { margin: 0 0 10px 0;} 
+            .printButton { display: none; }
+        </style>
+        <style type="text/css" media="all">
+            /* Fixes for bootstrap */
+            label, input, button, select, textarea { line-height: inherit; }
+            label { display: inline; margin-bottom: 0; line-height: 1; }
+            h3 { line-height: inherit; }
+            .payStatement .grid td { white-space: nowrap; }
+            td h2, td h3 { page-break-after: auto; }
+            table tr { page-break-inside: auto; }			
+        </style>
+                       
+        <!-- JS -->
+        <script type="text/javascript" src="../../lib/jquery/jquery.min.js" ></script>
+		<script type="text/javascript" src="../../lib/jquery/plugins/jquery-migrate-1.2.1.min.js" ></script>
+        <script type="text/javascript" src="../../lib/bootstrap/js/bootstrap.min.js" ></script>
+		<script type="text/javascript" src="../../lib/jquery/plugins/jquery.maxlength.min.js" ></script>
+        <script type="text/javascript" src="../../scripts/common.js" ></script>
+        <script type="text/javascript" language="javascript" src="../../scripts/Core/plugins/UltimateSoftware.jquery.jqprint.js" ></script>
+        <script type="text/javascript" >
+            $(document).ready(function () {
+                // Get the parameters key/value array from the query string
+                var params = buildArrayFromKeyValueString(window.location.search.replace("?USParams=", ""));
+                var containerIdOrSource = params["containerIdOrSource"];
+                var isAltDomain = false;
+
+                var sourceDocument = null;
+                if (window.opener) {
+                    if (window.opener.name.indexOf("editresubmit") > -1) {
+                        sourceDocument = window.opener.frames[0].document;
+                    }
+                    else if (window.opener.frames["ASP.homecontainer_aspx"]) {
+                        //Handle case where page is opened from alternate domain
+                        sourceDocument = window.opener.frames["ASP.homecontainer_aspx"].frames["ASP._home_aspx"]
+                            .document;
+                        isAltDomain = true;
+                    }
+                    else if (window.opener.frames[2] && window.opener.frames[2].name === "ASP.homecontainer_aspx") {
+                        sourceDocument = window.opener.frames[2].frames[0].document;
+                        isAltDomain = true;
+                    }
+                }
+                // Start document filtering for printing
+                jqPrint.FilterDocumentInPopupWindow(containerIdOrSource, sourceDocument, null, isAltDomain);
+                // Override the overflow:auto only in the notes print preview page
+                if (containerIdOrSource === "PopupLightboxPrintPreview" ||
+                    containerIdOrSource === "HelpPrintPreview" ||
+                    containerIdOrSource === 'MetaPrintPreview')
+                    $("body").css("overflow", "visible");
+
+                if (containerIdOrSource === "PayStatement") {
+                    $("body").addClass("payStatementPage");
+
+                    var webPayStatementIFrame = $("[id$='IFrameContent']");
+                    if (webPayStatementIFrame.length > 0) {
+                        if (typeof params["printMode"] !== "undefined") {
+                            webPayStatementIFrame.attr('src', insertParameterToQueryString(webPayStatementIFrame.attr('src'), 'printMode', params["printMode"]));
+                        }
+
+                        var curIFrame = webPayStatementIFrame[0];
+                        if (curIFrame) {
+                            curIFrame.onload = function () {
+                                curIFrame.style.height = curIFrame.contentWindow.document.body.scrollHeight + 10 + 'px';
+                            }
+
+                            var printBtns = $("[id$='printButton']");
+                            if (printBtns.length > 0) {
+                                printBtns.unbind("click");
+
+                                printBtns.bind("click", function() {
+                                    window.frames["IFrameContent"].focus();
+                                    window.frames["IFrameContent"].print();
+                                });
+                            }
+                        }
+                        
+                    }
+                    
+                }
+            });
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
